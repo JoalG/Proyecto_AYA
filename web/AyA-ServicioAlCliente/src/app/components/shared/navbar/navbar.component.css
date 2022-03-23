@@ -1,0 +1,27 @@
+.container-fluid {
+    padding-left: 0;
+    position: relative;
+    min-width: 100px;
+    min-height: 125px;
+}
+
+.bg{
+    display: none;
+    top: 0;
+    max-width: 100%;
+}
+
+
+@media only screen and (min-width:768px){
+    .logo {
+        position: absolute;
+        left: 170px;
+        top: 45px;
+    }
+    .bg{
+        position: absolute;
+        display: block;
+
+    }
+}
+
