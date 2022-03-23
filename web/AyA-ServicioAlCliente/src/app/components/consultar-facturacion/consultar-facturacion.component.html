@@ -1,46 +1,48 @@
 <div class="row justify-content-center">
-    <div class="col-6 px-3">
-        <div class="consulta-facturacion">
-            <div class="px-3 py-3 t2">
-                Consulta de facturación
-            </div>
-            <div class="d-flex justify-content-center">
-                
-                <form class="px-3" [formGroup]="myForm">
-                    <div class="c1 text-center my-3">
-                        Ingrese el numero NIS
-                    </div> 
-                    <input type="text" maxlength="7" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="nisNumber">
-                    <div class="c3 text-center mt-1 mb-3">
-                       <u>¿No sabes cuál es tu número NIS?</u>               
-                    </div> 
-
-                    <div class="c1 text-center my-3">
-                        Tipo de identificación
-                    </div>  
-                    <div class="form-group">
-                        <select class="form-select c1" id="exampleFormControlSelect1" [attr.disabled]="(myForm.get('nisNumber')?.invalid)? true: null" formControlName="idType"  >
-                            <option disabled selected value></option>
-                            <option>Cédula de residente</option>
-                            <option>Cédula de identidad</option>
-                            <option>Cédula jurídica</option>
-                        </select>
-                    </div>
-
-                    <div class="c1 text-center my-3">
-                        Ingresar identificación
-                    </div>  
-                    <input type="text" maxlength="9" class="form-control c1" (keypress)="isNumberKey($event)" [attr.disabled]="(myForm.get('idType')?.invalid)? true: null" formControlName="idNumber" >
+    <div class="col-lg-6 px-4">
+        <div class="row h-100">
+            <div class="consulta-facturacion">
+                <div class="px-3 py-3 t2">
+                    Consulta de facturación
+                </div>
+                <div class="d-flex justify-content-center">
                     
-                    <div class="col text-center">
-                        <button type="submit" value="submit" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null">Consultar</button>
-                    </div>
-
-                </form>
+                    <form class="px-3" [formGroup]="myForm">
+                        <div class="c1 text-center my-3">
+                            Ingrese el numero NIS
+                        </div> 
+                        <input type="text" maxlength="7" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="nisNumber">
+                        <div class="c3 text-center mt-1 mb-3">
+                           <u>¿No sabes cuál es tu número NIS?</u>               
+                        </div> 
+    
+                        <div class="c1 text-center my-3">
+                            Tipo de identificación
+                        </div>  
+                        <div class="form-group">
+                            <select class="form-select c1" id="exampleFormControlSelect1" [attr.disabled]="(myForm.get('nisNumber')?.invalid)? true: null" formControlName="idType"  >
+                                <option disabled selected value></option>
+                                <option>Cédula de residente</option>
+                                <option>Cédula de identidad</option>
+                                <option>Cédula jurídica</option>
+                            </select>
+                        </div>
+    
+                        <div class="c1 text-center my-3">
+                            Ingresar identificación
+                        </div>  
+                        <input type="text" maxlength="9" class="form-control c1" (keypress)="isNumberKey($event)" [attr.disabled]="(myForm.get('idType')?.invalid)? true: null" formControlName="idNumber" >
+                        
+                        <div class="col text-center">
+                            <button type="submit" value="submit" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null">Consultar</button>
+                        </div>
+    
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-4 px-3">
+    <div class="col-lg-4 px-4 my-3 my-lg-0">
         <div class="row mb-3">
             <button class="btn section">
                 <div class="t2">

@@ -1,7 +1,7 @@
 .consulta-facturacion{
     background-color: #FFFFFF;
     color: #026BBF;
-
+    width: 100%;
     min-height: 100%;
     border-radius: 10px;
 }
@@ -11,7 +11,6 @@
     color: #026BBF;
     
     min-height: 100px;
-    width: 100%;
     border-radius: 10px;
 }
 
