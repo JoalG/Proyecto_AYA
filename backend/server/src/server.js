@@ -15,6 +15,10 @@ app.use(
 app.use(express.json());
 
 // imports ROUTES
+const billRoute = require('./routes/bills');
+
+app.use('/bills', billRoute);
+
 
 mongoose.connect(
     process.env.DB_CONNECTION, {
