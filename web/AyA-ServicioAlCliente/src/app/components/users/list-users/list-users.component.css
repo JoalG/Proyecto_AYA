@@ -1,0 +1,9 @@
+.myTr{
+    /* White */
+
+    background: #FFFFFF;
+    /* shadow */
+
+    box-shadow: 2px 4px 8px rgba(142, 149, 155, 0.2);
+    border-radius: 0px 50px 50px 0px;
+}

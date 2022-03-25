@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { DetallesFacturacionComponent } from './components/detalles-facturacion/detalles-facturacion.component';
 import { CreateUserComponent } from './components/users/create-user/create-user.component';
+import { ListUsersComponent } from './components/users/list-users/list-users.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CreateUserComponent } from './components/users/create-user/create-user.
     NavbarComponent,
     SidebarComponent,
     DetallesFacturacionComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ListUsersComponent
   ],
   imports: [
     BrowserModule,
