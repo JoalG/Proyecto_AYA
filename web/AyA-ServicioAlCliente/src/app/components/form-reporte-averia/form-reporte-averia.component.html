@@ -1,0 +1,129 @@
+<div class="row text-center">
+    <div class="px-5 py-3 t2 ">
+        {{tipoFuga}}
+    </div>
+    <div class="text-center">
+        <img [src]="getImgSource()" class="averia-img" alt="...">
+    </div>
+</div>
+<div class="row justify-content-center mt-4">
+    <div class="col-10 ">
+        <div class="row my-5">
+            <div class="c1 text-center text-md-start">Complete el siguiente formulario:</div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <form class="w-75" [formGroup]="myForm">    
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Seleccione la provincia
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <select class="form-select c1" id="exampleFormControlSelect1" (change)="changeProvince()" formControlName="province">
+                                <option value="" selected disabled hidden></option>    
+                                <option *ngFor="let province of getProvinces()" >{{province.title}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Seleccione el cantón
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <select class="form-select c1" id="exampleFormControlSelect1" (change)="changeCanton()" [attr.disabled]="(myForm.get('province')?.invalid)? true: null" formControlName="canton">
+                                <option value="" selected disabled hidden></option>    
+                                <option *ngFor="let province of getCantons()">{{province.title}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>        
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Seleccione el distrito
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <select class="form-select c1" id="exampleFormControlSelect1" [attr.disabled]="(myForm.get('canton')?.invalid)? true: null" formControlName="district"  >
+                                <option value="" selected disabled hidden></option>    
+                                <option *ngFor="let province of getDistricts()">{{province.title}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>        
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Número de NIS
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" maxlength="7" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="nis">
+                    </div>
+                </div>        
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Nombre
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" maxlength="50" class="form-control c1 " formControlName="firstName">
+                    </div>
+                </div>   
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Apellidos
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" maxlength="50" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="lastName">
+                    </div>
+                </div>      
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Teléfono
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" maxlength="8" class="form-control c1 " formControlName="phone">
+                    </div>
+                </div>      
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Correo electrónico
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control c1 " formControlName="mail">
+                    </div>
+                </div>      
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Descripción de avería
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control" maxlength="500" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+                    </div>
+                </div>      
+                
+                <div class="text-center">
+                    <button type="submit" value="submit"  class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null">Consultar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
