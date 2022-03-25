@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { ConsultarFacturacionComponent } from './components/consultar-facturacion/consultar-facturacion.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { DetallesFacturacionComponent } from './components/detalles-facturacion/detalles-facturacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConsultarFacturacionComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    DetallesFacturacionComponent
   ],
   imports: [
     BrowserModule,
