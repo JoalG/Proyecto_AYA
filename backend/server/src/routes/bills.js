@@ -36,12 +36,20 @@ router.get('/collection/:_nis&:_clientIdType&:_clientId', async(req, res) => {
         });
 
         //console.log(bill);
-        
-        res.status(200).json({
-            success: true,
-            message: 'Success',
-            data: bill
-        });
+
+        if(bill != null){
+            res.status(200).json({
+                success: true,
+                message: 'Success',
+                data: bill
+            });
+        }else{
+            res.status(200).json({
+                success: false,
+                message: 'Los datos no coinciden con los de ningun cliente.',
+                data: bill
+            });            
+        }
 
     } catch ({ message }) {
         res.status(200).json({
@@ -66,11 +74,19 @@ router.get('/history/:_nis&:_clientIdType&:_clientId', async(req, res) => {
 
         //console.log(bill);
         
-        res.status(200).json({
-            success: true,
-            message: 'Success',
-            data: bill
-        });
+        if(bill != null){
+            res.status(200).json({
+                success: true,
+                message: 'Success',
+                data: bill
+            });
+        }else{
+            res.status(200).json({
+                success: false,
+                message: 'Los datos no coinciden con los de ningun cliente.',
+                data: bill
+            });            
+        }
 
     } catch ({ message }) {
         res.status(200).json({
