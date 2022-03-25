@@ -17,4 +17,8 @@ export class UserService {
   createUser(user:User):Observable<CustomResponse>{
     return this.http.post<CustomResponse>(this.URL_API + '/', user);
   }
+
+  getUsers():Observable<CustomResponse>{
+    return this.http.get<CustomResponse>(this.URL_API + '/');
+  }
 }

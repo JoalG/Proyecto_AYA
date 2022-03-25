@@ -10,14 +10,17 @@ const crypto = require('crypto');
 //S: Todos los users 
 router.get('/', async(req, res) => {
     try {
-        const user = await User.find();
-        res.json(user);
-
-    } catch ({ message }) {
+        const users = await User.find();
+        res.json({
+            success: true,
+            message: 'Success',
+            data: users
+        });
+    } catch (error) {
         res.status(200).json({
-            success: false,
-            message: "Usuarios no encontrados",
-            data: {}
+            success: true,
+            message: 'Error',
+            data: savedBill
         });
     }
 
