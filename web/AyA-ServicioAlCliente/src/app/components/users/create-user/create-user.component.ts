@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-user',
@@ -9,7 +11,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class CreateUserComponent implements OnInit {
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private readonly _userService: UserService
   ) { }
 
   myForm!: FormGroup; 
@@ -34,7 +37,24 @@ export class CreateUserComponent implements OnInit {
     
   }
 
-  createUser(){
-    console.log(this.myForm)
+  async createUser(){
+    if (this.myForm.valid){
+      let user: User = {
+        name: this.myForm.value.name,
+        lastname: this.myForm.value.lastname,
+        email: this.myForm.value.email,
+        cedula: this.myForm.value.cedula,
+        userType: this.myForm.value.userType,
+        password: this.myForm.value.password
+      }
+
+      let res = (await this._userService.createUser(user).toPromise());
+      if(res?.success){
+        console.log("USUARIO CREADO")
+      }
+      else{
+        console.log("ERROR. USUARIO NO CREADO")
+      }
+    }
   }
 }
