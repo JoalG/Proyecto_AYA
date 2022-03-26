@@ -11,6 +11,7 @@ import { DetallesFacturacionComponent } from './components/detalles-facturacion/
 import { CreateUserComponent } from './components/users/create-user/create-user.component';
 import { ListUsersComponent } from './components/users/list-users/list-users.component';
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EditUserComponent } from './components/users/edit-user/edit-user.compon
     DetallesFacturacionComponent,
     CreateUserComponent,
     ListUsersComponent,
-    EditUserComponent
+    EditUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
