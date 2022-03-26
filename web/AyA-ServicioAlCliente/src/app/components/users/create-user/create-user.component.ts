@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,7 +13,8 @@ export class CreateUserComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private readonly _userService: UserService
+    private readonly _userService: UserService,
+    private router: Router
   ) { }
 
   myForm = this.fb.group({
@@ -50,6 +52,7 @@ export class CreateUserComponent implements OnInit {
       let res = (await this._userService.createUser(user).toPromise());
       if(res?.success){
         console.log("USUARIO CREADO")
+        this.router.navigate(['/list-users'])
       }
       else{
         console.log("ERROR. USUARIO NO CREADO")

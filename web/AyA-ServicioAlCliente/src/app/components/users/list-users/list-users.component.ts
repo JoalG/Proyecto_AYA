@@ -48,7 +48,14 @@ export class ListUsersComponent implements OnInit {
     this.router.navigate(['/edit-user', cedula]);
   }
 
-  deleteUser(cedula: string){
-    console.log("hice delete " + cedula)
+  async deleteUser(cedula: string){
+    let res = (await this._userService.deleteUser(cedula).toPromise());
+    if(res?.success){
+      console.log(res?.message);
+      this.getUsers();
+    }
+    else{
+      console.log(res?.message);
+    }
   }
 }

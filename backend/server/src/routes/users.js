@@ -55,9 +55,9 @@ router.get('/:cedula', async(req, res) => {
 //DELETE de un user
 //E: cedula
 //S: User 
-router.delete('/', async(req, res) => {
+router.delete('/:cedula', async(req, res) => {
     try {
-        const findUser = await User.findOne({ cedula: req.body.cedula });
+        const findUser = await User.findOne({ cedula: req.params.cedula });
         if (findUser != null) {
             const removeUser = await User.findOneAndRemove({ _id: findUser._id });
             res.status(200).json({

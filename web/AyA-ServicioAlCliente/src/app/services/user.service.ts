@@ -29,4 +29,8 @@ export class UserService {
   updateUser(originalCedula: string, user:User):Observable<CustomResponse>{
     return this.http.patch<CustomResponse>(this.URL_API + '/', {'originalCedula': originalCedula, 'user': user});
   }
+
+  deleteUser(cedula: string):Observable<CustomResponse>{
+    return this.http.delete<CustomResponse>(this.URL_API + '/' + cedula);
+  }
 }
