@@ -13,7 +13,6 @@ export class AuthenticationGuard implements CanActivate {
 
   }
 
-
   canActivate() {
     if(this._userService.loggedIn()){
       return true;

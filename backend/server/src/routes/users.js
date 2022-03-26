@@ -196,55 +196,30 @@ router.patch('/', async(req, res) => {
 
 });
 
-router.post('/signin', async (req, res) => {
+router.post('/login', async (req, res) => {
     
-    const { email, password } = req.body;
-
-    try {
-        const bill = new User({
-            nis: req.body.nis,
-            name: req.body.name,
-            lastname: req.body.lastname,
-            email: req.body.email,
-            cedula: req.body.cedula,
-            userType: req.body.userType,
-            password: req.body.password
-        });
-        
-        //console.log(bill);
-        
-        await bill.save(function(err) {
-            if (err) {
-                res.status(200).json({
-                    success: false,
-                    err,
-                    data: {}
-                });
-            } else {
-                savedBill = bill.toObject();
-                res.status(200).json({
-                    success: true,
-                    message: 'Success',
-                    data: savedBill
-                });
-            }
-        }); //metodo de mongoose para guardar 
-
-    } catch ({ message }) {
+    const user = await User.findOne({ email: req.body.email });
+    if (user != null) {
+        if (user.validPassword(req.body.password)) {
+            res.status(200).json({
+                success: true,
+                message: "Login exitoso",
+                data: user.generateJwt()
+            });
+        } else {
+            res.status(200).json({
+                success: false,
+                message: "Contraseña incorrecta",
+                data: {}
+            });
+        }
+    } else {
         res.status(200).json({
             success: false,
-            message,
+            message: "Usuario no existe",
             data: {}
         });
     }
-
-    const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(401).send('The User doen\' exists');
-    if (!user.validPassword(password)) return res.status(401).send('Wrong Password');
-
-        const token = user.generateJwt();
-
-    return res.status(200).json({token});
 });
 
 

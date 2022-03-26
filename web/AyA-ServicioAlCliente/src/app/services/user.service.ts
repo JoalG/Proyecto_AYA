@@ -34,8 +34,8 @@ export class UserService {
     return this.http.delete<CustomResponse>(this.URL_API + '/' + cedula);
   }
 
-  signInUser(user:any) {
-    return this.http.post(this.URL_API + '/signin', user);
+  login(email: string, password: string):Observable<CustomResponse> {
+    return this.http.post<CustomResponse>(this.URL_API + '/login', {'email': email, 'password': password});
   }
 
   loggedIn() {
@@ -44,7 +44,7 @@ export class UserService {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/tasks']);
+    this.router.navigate(['/login']);
   }
 
   getToken() {

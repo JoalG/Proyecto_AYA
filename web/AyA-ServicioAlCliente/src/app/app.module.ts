@@ -12,6 +12,9 @@ import { CreateUserComponent } from './components/users/create-user/create-user.
 import { ListUsersComponent } from './components/users/list-users/list-users.component';
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
 import { LoginComponent } from './components/login/login.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthenticationGuard } from './authentication.guard';
 
 @NgModule({
   declarations: [
@@ -29,9 +32,13 @@ import { LoginComponent } from './components/login/login.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [],
+  providers: [
+    AuthenticationGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
