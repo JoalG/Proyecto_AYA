@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationGuard } from './authentication.guard';
+import { UserMainPageComponent } from './components/users/user-main-page/user-main-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthenticationGuard } from './authentication.guard';
     CreateUserComponent,
     ListUsersComponent,
     EditUserComponent,
-    LoginComponent
+    LoginComponent,
+    UserMainPageComponent
   ],
   imports: [
     BrowserModule,
