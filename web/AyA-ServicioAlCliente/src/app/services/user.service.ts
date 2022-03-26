@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CustomResponse } from '../models/custom-response.model';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +50,14 @@ export class UserService {
 
   getToken() {
     return localStorage.getItem('token');
+  }
+
+  getUserType(){
+    const token:any = localStorage.getItem('token');
+    if(token !== null){
+      const decoded:any = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload typ
+      return decoded.userType;
+    }
+    return null
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-main-page',
@@ -10,7 +11,8 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 export class UserMainPageComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private readonly _userService: UserService
   ) { }
 
   userType: Number = 1;
@@ -24,11 +26,6 @@ export class UserMainPageComponent implements OnInit {
   }
 
   setUserType(){
-    const token:any = localStorage.getItem('token');
-    if(token !== null){
-      const decoded:any = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload typ
-      this.userType = decoded.userType;
-      console.log(decoded)
-    }
+    this.userType = this._userService.getUserType();
   }
 }

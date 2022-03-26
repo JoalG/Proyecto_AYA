@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationGuard } from './authentication.guard';
 import { UserMainPageComponent } from './components/users/user-main-page/user-main-page.component';
+import { RoleGuard } from './role.guard';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UserMainPageComponent } from './components/users/user-main-page/user-ma
     ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [
-    AuthenticationGuard
+    AuthenticationGuard,
+    RoleGuard
   ],
   bootstrap: [AppComponent]
 })

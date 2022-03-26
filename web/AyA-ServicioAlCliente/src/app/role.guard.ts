@@ -6,7 +6,7 @@ import { UserService } from './services/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationGuard implements CanActivate {
+export class RoleGuard implements CanActivate {
 
   constructor(private readonly _userService: UserService, private router: Router)
   {
@@ -15,9 +15,14 @@ export class AuthenticationGuard implements CanActivate {
 
   canActivate() {
     if(this._userService.loggedIn()){
-      return true;
+      // Return true only if super administrador
+      if(this._userService.getUserType() == 0){
+        return true;
+      };
+      this.router.navigate(['/user-main-page']);
+      return false;
     }
-    this.router.navigate(['/consultar-facturación'])
+    this.router.navigate(['/consultar-facturacion']);
     return false;
   }
   
