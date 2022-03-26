@@ -21,4 +21,12 @@ export class UserService {
   getUsers():Observable<CustomResponse>{
     return this.http.get<CustomResponse>(this.URL_API + '/');
   }
+
+  getUser(cedula: string):Observable<CustomResponse>{
+    return this.http.get<CustomResponse>(this.URL_API + '/' + cedula);
+  }
+
+  updateUser(originalCedula: string, user:User):Observable<CustomResponse>{
+    return this.http.patch<CustomResponse>(this.URL_API + '/', {'originalCedula': originalCedula, 'user': user});
+  }
 }

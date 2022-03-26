@@ -10,6 +10,7 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
 import { DetallesFacturacionComponent } from './components/detalles-facturacion/detalles-facturacion.component';
 import { CreateUserComponent } from './components/users/create-user/create-user.component';
 import { ListUsersComponent } from './components/users/list-users/list-users.component';
+import { EditUserComponent } from './components/users/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ListUsersComponent } from './components/users/list-users/list-users.com
     SidebarComponent,
     DetallesFacturacionComponent,
     CreateUserComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

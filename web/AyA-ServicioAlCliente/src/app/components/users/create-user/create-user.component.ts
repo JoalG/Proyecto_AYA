@@ -15,20 +15,19 @@ export class CreateUserComponent implements OnInit {
     private readonly _userService: UserService
   ) { }
 
-  myForm!: FormGroup; 
+  myForm = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
+    lastname: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
+    email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+    cedula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+    userType: ['', [Validators.required]],
+    password: ['', [Validators.required, Validators.minLength(10)]]
+  });
 
   ngOnInit(): void {
-    this.myForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
-      lastname: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
-      email: ['', [Validators.required, Validators.email]],
-      cedula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      userType: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(10)]]
-    });
+
   }
-
-
+  
   isNumberKey(evt:KeyboardEvent) {
     var charCode = (evt.which) ? evt.which : evt.keyCode
     if (charCode > 31 && (charCode < 48 || charCode > 57))

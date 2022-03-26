@@ -16,36 +16,16 @@ router.get('/', async(req, res) => {
             message: 'Success',
             data: users
         });
-    } catch (error) {
+    } catch (message) {
         res.status(200).json({
-            success: true,
-            message: 'Error',
-            data: savedBill
+            success: false,
+            message,
+            data: {}
         });
     }
 
 });
 
-
-
-//GET 
-//E: 
-//S: Get List 
-router.get('/list', async(req, res) => {
-    try {
-        const user = await User.find();
-        resultado = []
-        user.forEach(element => {
-            resultado.push(element.cedula);
-        });
-
-
-        res.json(resultado);
-    } catch (error) {
-        res.status(401).send('Ha ocurrido un error.');
-    }
-
-});
 
 
 //GET de un user en especifico
@@ -54,10 +34,17 @@ router.get('/list', async(req, res) => {
 router.get('/:cedula', async(req, res) => {
     try {
         const user = await User.findOne({ cedula: req.params.cedula });
-        console.log(user);
-        res.json(user);
-    } catch (error) {
-        res.status(401).send('Ha ocurrido un error.');
+        res.json({
+            success: true,
+            message: 'Success',
+            data: user
+        });
+    } catch (message) {
+        res.status(200).json({
+            success: false,
+            message,
+            data: {}
+        });
     }
 
 });
@@ -73,9 +60,17 @@ router.delete('/', async(req, res) => {
         const findUser = await User.findOne({ cedula: req.body.cedula });
         if (findUser != null) {
             const removeUser = await User.findOneAndRemove({ _id: findUser._id });
-            res.json(removeUser);
+            res.status(200).json({
+                success: true,
+                message: 'Success',
+                data: {}
+            });
         } else {
-            res.status(401).send('Error. Este usuario no está en la base de datos');
+            res.status(200).json({
+                success: false,
+                message: 'Error',
+                data: token
+            });
         }
 
     } catch (error) {
@@ -149,6 +144,57 @@ router.post('/', async(req, res) => {
 
 });
 
+router.patch('/', async(req, res) => {
+
+    try {
+
+        const findUser = await User.findOne({ cedula: req.body.originalCedula });
+        if (findUser != null) {
+
+            if(req.body.originalCedula != req.body.user.cedula){
+                const findOtherUser = await User.findOne({ cedula: req.body.user.cedula });
+                if(findOtherUser != null){
+                    return res.status(200).json({
+                        success: false,
+                        message: "Usuario ya existe",
+                        data: {}
+                    })
+                }
+            
+            }
+            const updatedUser = await User.updateOne({_id: findUser._id}, {$set: {
+                name: req.body.user.name,
+                lastname: req.body.user.lastname,
+                email: req.body.user.email,
+                cedula: req.body.user.cedula,
+                userType: req.body.user.userType
+
+            }})
+            res.status(200).json({
+                success: true,
+                message: "Usuario actualizado",
+                data: {}
+            })
+            
+
+        } else {
+            res.status(200).json({
+            success: false,
+            message: "Usuario No existe",
+            data: {}
+        });
+        }
+
+    } catch ({ message }) {
+        res.status(200).json({
+            success: false,
+            message,
+            data: {}
+        });
+    }
+
+
+});
 
 router.post('/signin', async (req, res) => {
     

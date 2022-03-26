@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,7 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 export class ListUsersComponent implements OnInit {
 
   constructor(
-    private readonly _userService: UserService
+    private readonly _userService: UserService,
+    private router: Router
   ) { }
 
   users!: any[]
@@ -21,10 +23,7 @@ export class ListUsersComponent implements OnInit {
 
   async getUsers(){
     let res = (await this._userService.getUsers().toPromise());
-    console.log(res)
     if(res?.success){
-      console.log(res?.data);
-      console.log("HOIILLLALA")
       this.users = res?.data;
     }
     else{
@@ -46,7 +45,7 @@ export class ListUsersComponent implements OnInit {
   }
 
   goToEditUser(cedula: string){
-    console.log("hice click " + cedula)
+    this.router.navigate(['/edit-user', cedula]);
   }
 
   deleteUser(cedula: string){
