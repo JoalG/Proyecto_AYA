@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
     private readonly _userService: UserService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   myForm = this.fb.group({
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
     if(res?.success){
       console.log(res?.message);
       localStorage.setItem('token', res.data);
+      this.router.navigate(['/user-main-page']);
       this.toastr.success("Bienvenido","Sesión iniciada con éxito");
     }
     else{

@@ -49,6 +49,7 @@ UserSchema.methods.generateJwt = function() {
       name: this.name,
       lastname: this.lastname,
       cedula: this.cedula,
+      userType: this.userType,
       exp: parseInt(expiry.getTime() / 1000),
     }, "secretkey"); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
