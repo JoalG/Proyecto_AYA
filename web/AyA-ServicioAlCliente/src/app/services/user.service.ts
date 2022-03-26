@@ -33,4 +33,21 @@ export class UserService {
   deleteUser(cedula: string):Observable<CustomResponse>{
     return this.http.delete<CustomResponse>(this.URL_API + '/' + cedula);
   }
+
+  signInUser(user:any) {
+    return this.http.post(this.URL_API + '/signin', user);
+  }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/tasks']);
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }
