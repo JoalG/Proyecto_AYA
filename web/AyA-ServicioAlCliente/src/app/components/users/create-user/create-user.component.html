@@ -1,0 +1,87 @@
+<div class="px-3 py-3 t2 text-center">
+    Crear cuenta para funcionario
+</div>
+<div class="row justify-content-center text-center">
+    <div class="col-lg-6 px-4">
+        <div class="row h-100">
+                <div class="d-flex justify-content-center">                    
+                    <form class="px-3" [formGroup]="myForm">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="c1 my-1">
+                                        Nombre:
+                                    </div> 
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" maxlength="50" class="form-control c1 " formControlName="name">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="c1 my-1">
+                                        Apellidos:
+                                    </div> 
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" maxlength="50" class="form-control c1 " formControlName="lastname">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="c1 my-1">
+                                        Correo electrónico:
+                                    </div> 
+                                </div>
+                                <div class="col-8">
+                                    <input type="email" maxlength="254" class="form-control c1 " formControlName="email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="c1 my-1">
+                                        Cédula:
+                                    </div> 
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" maxlength="9" class="form-control c1 " formControlName="cedula">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="c1 my-1">
+                                        Tipo:
+                                    </div> 
+                                </div>
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <select class="form-select c1" id="exampleFormControlSelect1" formControlName="userType"  >
+                                            <option disabled selected value></option>
+                                            <option value="0">Super Administrador</option>
+                                            <option value="1">Servicio al cliente</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="c1 my-1">
+                                        Contraseña:
+                                    </div> 
+                                </div>
+                                <div class="col-8">
+                                    <input type="password" minlength="10" class="form-control c1 " formControlName="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col text-center">
+                            <button type="submit" value="submit" (click)="createUser()" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null">Agregar funcionario</button>
+                        </div>
+                        
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
+
+myForm {{myForm.value | json}}

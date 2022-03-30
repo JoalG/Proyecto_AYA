@@ -16,8 +16,10 @@ app.use(express.json());
 
 // imports ROUTES
 const billRoute = require('./routes/bills');
+const usersRoute = require('./routes/users');
 
 app.use('/bills', billRoute);
+app.use('/users', usersRoute);
 
 
 mongoose.connect(
