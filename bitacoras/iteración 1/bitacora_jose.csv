@@ -1,0 +1,17 @@
+﻿Nombre:,,
+Jose Alfredo Gamboa Román,,
+,,
+Fecha,Avance,Detalles
+22/03/2022,Creación del proyecto Angular,Se creó el proyecto de Angular
+22/03/2022,Consultar Facturación component,Se creó el componenete consultar facturación. Se desarrollo el form y contenido principal del component. 
+,,
+23/03/2022,Navbar component,Se creó y desarrollo el componente de Navbar del sistema
+,Sidebar component,Se creó y desarrollo el componente de sidebar del sistema
+,,
+24/03/2022,API Database,Se creó el API de la base de datos 
+,Bills routes ,Se crearon las rutas de la colección de Bills
+,Detalles facturacion component,Se creo y desarrollo el componente de detalles Facturacion 
+,Angular Routing,Se agregó el enrutamiento de angular al proyecto
+,,
+25/03/2022,Reportar averias component ,
+,Form reporte averia component ,

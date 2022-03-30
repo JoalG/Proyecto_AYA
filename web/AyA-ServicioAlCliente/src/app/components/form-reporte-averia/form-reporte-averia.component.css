@@ -1,0 +1,36 @@
+.t2{
+    color: #026BBF;
+}
+
+.averia-img{
+    width: 120px;
+    height: 120px;
+    filter: brightness(110%);
+}
+
+input{
+    border: 1px solid #CED3D8;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+textarea{
+    /* White */
+    background: #FFFFFF;
+    /* Shadows/gray light */
+
+    border: 1px solid #CED3D8;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+select{
+    border: 1px solid #CED3D8;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.form-row{
+    padding-bottom: 5%;
+}
+

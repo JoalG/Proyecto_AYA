@@ -9,11 +9,15 @@ import { EditUserComponent } from './components/users/edit-user/edit-user.compon
 import { ListUsersComponent } from './components/users/list-users/list-users.component';
 import { UserMainPageComponent } from './components/users/user-main-page/user-main-page.component';
 import { RoleGuard } from './role.guard';
+import { FormReporteAveriaComponent } from './components/form-reporte-averia/form-reporte-averia.component';
+import { ReporteAveriasComponent } from './components/reporte-averias/reporte-averias.component';
 
 const routes: Routes = [
   
   {path:'consultar-facturacion', component:ConsultarFacturacionComponent},
   {path:'detalles-facturacion', component:DetallesFacturacionComponent},
+  {path:'reporte-averias', component:ReporteAveriasComponent},
+  {path:'reportar-averia/:type', component:FormReporteAveriaComponent},
   {
     path:'create-user', 
     component:CreateUserComponent,

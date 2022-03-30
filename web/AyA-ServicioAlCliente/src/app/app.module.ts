@@ -17,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationGuard } from './authentication.guard';
 import { UserMainPageComponent } from './components/users/user-main-page/user-main-page.component';
 import { RoleGuard } from './role.guard';
+import { ReporteAveriasComponent } from './components/reporte-averias/reporte-averias.component';
+import { FormReporteAveriaComponent } from './components/form-reporte-averia/form-reporte-averia.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +26,14 @@ import { RoleGuard } from './role.guard';
     ConsultarFacturacionComponent,
     NavbarComponent,
     SidebarComponent,
-    DetallesFacturacionComponent,
     CreateUserComponent,
     ListUsersComponent,
     EditUserComponent,
     LoginComponent,
     UserMainPageComponent
+    DetallesFacturacionComponent,
+    ReporteAveriasComponent,
+    FormReporteAveriaComponent
   ],
   imports: [
     BrowserModule,

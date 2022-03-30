@@ -1,0 +1,24 @@
+.t2{
+    color: #026BBF;
+}
+
+.averia-card{
+    background-color: white;
+    width:139px;
+    height:139px;
+    border-radius: 10px;
+    margin: 5%;
+}
+
+.averia-card:hover{
+    cursor: pointer;
+    -webkit-box-shadow:  0 0 11px rgba(33,33,33,.2);
+    -moz-box-shadow:  0 0 11px rgba(33,33,33,.2);
+    box-shadow:  0 0 11px rgba(33,33,33,.2);
+  
+}
+
+.averia-img{
+    width: 76px;
+    height: 76px;
+}
