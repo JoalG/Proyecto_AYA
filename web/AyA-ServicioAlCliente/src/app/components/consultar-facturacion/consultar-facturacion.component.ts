@@ -12,6 +12,12 @@ import { BillsService } from 'src/app/services/bills.service';
 })
 export class ConsultarFacturacionComponent implements OnInit {
 
+  myForm: FormGroup = this.fb.group({
+    nis: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
+    clientIdType: ['', [Validators.required]],
+    clientId: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]]
+  });
+
   constructor(
     private fb: FormBuilder,
     private readonly _billService: BillsService,
@@ -20,12 +26,6 @@ export class ConsultarFacturacionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  myForm: FormGroup = this.fb.group({
-    nis: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
-    clientIdType: ['', [Validators.required]],
-    clientId: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]]
-  });
 
   isNumberKey(evt:KeyboardEvent) {
     var charCode = (evt.which) ? evt.which : evt.keyCode
