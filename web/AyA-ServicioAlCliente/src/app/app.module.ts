@@ -30,7 +30,7 @@ import { FormReporteAveriaComponent } from './components/form-reporte-averia/for
     ListUsersComponent,
     EditUserComponent,
     LoginComponent,
-    UserMainPageComponent
+    UserMainPageComponent,
     DetallesFacturacionComponent,
     ReporteAveriasComponent,
     FormReporteAveriaComponent
