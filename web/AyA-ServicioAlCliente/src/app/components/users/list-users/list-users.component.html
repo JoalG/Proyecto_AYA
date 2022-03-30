@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Cédula</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Correo electrónico</th>
+        <th scope="col">Tipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="myTr" *ngFor="let user of users">
+        <td>{{user.cedula}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.email}}</td>
+        <td>{{getUserTypeText(user.userType)}}</td>
+        <td><i class="fa-solid fa-pen-to-square" (click)="goToEditUser(user.cedula)"></i></td>
+        <td><i class="fa-solid fa-trash-can" (click)="deleteUser(user.cedula)"></i></td>
+      </tr>
+    </tbody>
+  </table>
