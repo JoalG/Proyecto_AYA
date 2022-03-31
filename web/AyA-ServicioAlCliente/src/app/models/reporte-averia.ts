@@ -1,5 +1,5 @@
 export interface ReporteAveria{
-    _id: string,
+    _id?: string,
     provincia: string,
     canton: string,
     distrito: string,
@@ -9,6 +9,6 @@ export interface ReporteAveria{
     phoneNumber: string,
     email: string,
     description: string,
-    type: number,
+    type: string,
     state: number
 }

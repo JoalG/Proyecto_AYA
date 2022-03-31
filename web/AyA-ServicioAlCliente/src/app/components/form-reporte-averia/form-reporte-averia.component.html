@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="form-group">
-                            <select class="form-select c1" id="exampleFormControlSelect1" (change)="changeProvince()" formControlName="province">
+                            <select class="form-select c1" id="exampleFormControlSelect1" (change)="changeProvince()" formControlName="provincia">
                                 <option value="" selected disabled hidden></option>    
                                 <option *ngFor="let province of getProvinces()" >{{province.title}}</option>
                             </select>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="form-group">
-                            <select class="form-select c1" id="exampleFormControlSelect1" [attr.disabled]="(myForm.get('canton')?.invalid)? true: null" formControlName="district"  >
+                            <select class="form-select c1" id="exampleFormControlSelect1" [attr.disabled]="(myForm.get('canton')?.invalid)? true: null" formControlName="distrito"  >
                                 <option value="" selected disabled hidden></option>    
                                 <option *ngFor="let province of getDistricts()">{{province.title}}</option>
                             </select>
@@ -75,7 +75,7 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="50" class="form-control c1 " formControlName="firstName">
+                        <input type="text" maxlength="50" class="form-control c1 " formControlName="name">
                     </div>
                 </div>   
                 <div class="row form-row">
@@ -85,7 +85,7 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="50" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="lastName">
+                        <input type="text" maxlength="50" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="lastname">
                     </div>
                 </div>      
                 <div class="row form-row">
@@ -95,7 +95,7 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="8" class="form-control c1 " formControlName="phone">
+                        <input type="text" maxlength="8" class="form-control c1 " formControlName="phoneNumber">
                     </div>
                 </div>      
                 <div class="row form-row">
@@ -105,7 +105,7 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control c1 " formControlName="mail">
+                        <input type="text" class="form-control c1 " formControlName="email">
                     </div>
                 </div>      
                 <div class="row form-row">
@@ -120,7 +120,7 @@
                 </div>      
                 
                 <div class="text-center">
-                    <button type="submit" value="submit"  class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null">Consultar</button>
+                    <button type="submit" value="submit" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null" (click)="createReport()">Consultar</button>
                 </div>
 
             </form>
