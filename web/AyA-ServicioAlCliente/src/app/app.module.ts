@@ -20,6 +20,7 @@ import { RoleGuard } from './role.guard';
 import { ReporteAveriasComponent } from './components/reporte-averias/reporte-averias.component';
 import { FormReporteAveriaComponent } from './components/form-reporte-averia/form-reporte-averia.component';
 import { ListReporteAveriaComponent } from './components/list-reporte-averia/list-reporte-averia.component';
+import { EditReporteAveriaComponent } from './components/edit-reporte-averia/edit-reporte-averia.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ListReporteAveriaComponent } from './components/list-reporte-averia/lis
     DetallesFacturacionComponent,
     ReporteAveriasComponent,
     FormReporteAveriaComponent,
-    ListReporteAveriaComponent
+    ListReporteAveriaComponent,
+    EditReporteAveriaComponent
   ],
   imports: [
     BrowserModule,
