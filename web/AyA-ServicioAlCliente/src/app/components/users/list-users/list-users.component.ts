@@ -48,6 +48,10 @@ export class ListUsersComponent implements OnInit {
     this.router.navigate(['/edit-user', cedula]);
   }
 
+  goToCreateUser(){
+    this.router.navigate(['/create-user']);
+  }
+
   async deleteUser(cedula: string){
     let res = (await this._userService.deleteUser(cedula).toPromise());
     if(res?.success){
