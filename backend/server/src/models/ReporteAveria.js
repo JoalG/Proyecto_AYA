@@ -40,6 +40,10 @@ const ReporteAveriaSchema = mongoose.Schema({
     type:{
         type: Number,
         required: true
+    },
+    state:{
+        type: String,
+        required: true
     }
 });
 
