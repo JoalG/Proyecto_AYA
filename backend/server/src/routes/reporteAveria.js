@@ -64,7 +64,8 @@ router.post('/', async(req, res) => {
             email: req.body.email,
             description: req.body.description,
             type: req.body.type,
-            state: req.body.state
+            state: req.body.state,
+            creationDate: new Date()
         });
                 
         await report.save(function(err) {
@@ -109,7 +110,7 @@ router.patch('/', async(req, res) => {
             res.status(200).json({
                 success: true,
                 message: "Reporte actualizado",
-                data: {}
+                data: updateReport
             })
         } else {
             res.status(200).json({
@@ -125,6 +126,33 @@ router.patch('/', async(req, res) => {
             data: {}
         });
     }
+});
+
+//DELETE de un user
+//E: _id
+//S: report 
+router.delete('/:_id', async(req, res) => {
+    try {
+        const findReport = await ReporteAveria.findOne({ _id: req.params._id });
+        if (findReport != null) {
+            const removeReport = await ReporteAveria.findOneAndRemove({ _id: findReport._id });
+            res.status(200).json({
+                success: true,
+                message: 'Success',
+                data: {}
+            });
+        } else {
+            res.status(200).json({
+                success: false,
+                message: 'Error',
+                data: {}
+            });
+        }
+
+    } catch (error) {
+        res.status(401).send('Ha ocurrido un error.');
+    }
+
 });
 
 module.exports = router;

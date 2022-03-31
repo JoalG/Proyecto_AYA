@@ -44,6 +44,10 @@ const ReporteAveriaSchema = mongoose.Schema({
     state:{
         type: Number,
         required: true
+    },
+    creationDate: {
+        type: Date,
+        required: true
     }
 });
 

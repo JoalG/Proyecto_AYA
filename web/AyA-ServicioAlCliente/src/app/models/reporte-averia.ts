@@ -10,5 +10,6 @@ export interface ReporteAveria{
     email: string,
     description: string,
     type: string,
-    state: number
+    state: number,
+    creationDate?: Date
 }
