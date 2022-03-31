@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
@@ -14,7 +14,8 @@ export class EditUserComponent implements OnInit {
   constructor(
     private readonly _userService: UserService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   originalCedula!: string|null
@@ -64,6 +65,7 @@ export class EditUserComponent implements OnInit {
       let res = (await this._userService.updateUser(this.originalCedula!, user).toPromise());
       if(res?.success){
         console.log("USUARIO ACTUALIZADO")
+        this.router.navigate(['/list-users'])
       }
       else{
         console.log(res?.message)
