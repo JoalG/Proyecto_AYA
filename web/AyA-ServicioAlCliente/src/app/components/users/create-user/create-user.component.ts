@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -10,14 +10,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-
-  constructor(
-    private fb: FormBuilder,
-    private readonly _userService: UserService,
-    private router: Router
-  ) { }
-
-  myForm = this.fb.group({
+  
+  myForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
     lastname: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
     email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
@@ -26,8 +20,13 @@ export class CreateUserComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(10)]]
   });
 
-  ngOnInit(): void {
+  constructor(
+    private fb: FormBuilder,
+    private readonly _userService: UserService,
+    private router: Router
+  ) { }
 
+  ngOnInit(): void {
   }
   
   isNumberKey(evt:KeyboardEvent) {
