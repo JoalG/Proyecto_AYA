@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ReporteAveriaService } from 'src/app/services/reporte-averia.service';
 
 @Component({
   selector: 'app-list-reporte-averia',
@@ -7,9 +9,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListReporteAveriaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly _reporteAveriaService: ReporteAveriaService,
+    private router: Router
+  ) { }
+
+  reports!: any;
 
   ngOnInit(): void {
+    this.getReports();
   }
 
+  async getReports(){
+    let res = (await this._reporteAveriaService.getReports().toPromise());
+    if(res?.success){
+      this.reports = res?.data;
+    }
+    else{
+      console.log(res?.message);
+    }
+  }
+
+  getReportState(type: number):string{
+    switch (type) {
+      case 0:
+        return "Pendiente"
+      case 1:
+        return "En revisión"
+      case 2:
+        return "Solucionado"
+      default:
+        return ""
+    }
+  }
+
+  goToEditReport(_id: string){
+    this.router.navigate(['/']);
+  }
 }
