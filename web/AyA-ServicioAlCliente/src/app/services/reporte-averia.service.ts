@@ -29,7 +29,7 @@ export class ReporteAveriaService {
     return this.http.get<CustomResponse>(this.URL_API + '/' + _id);
   }
 
-  updateUser(_id: string, state: number):Observable<CustomResponse>{
+  updateReport(_id: string, state: number):Observable<CustomResponse>{
     return this.http.patch<CustomResponse>(this.URL_API + '/', {'_id': _id, 'state': state});
   }
 }

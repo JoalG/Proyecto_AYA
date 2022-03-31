@@ -16,7 +16,7 @@ export class ReporteAveriasComponent implements OnInit {
   }
 
   goToReportarAveria(type:string){
-    this.router.navigate(["/reportar-averia",type])
+    this.router.navigate(["/edit-reporte-averia",type])
   }
 
 }

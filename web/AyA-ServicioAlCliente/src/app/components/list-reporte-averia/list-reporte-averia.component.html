@@ -21,11 +21,14 @@
         <div class="col-2">
             <div class="t2">Estado</div>
         </div>
-        <div class="col-2">
+        <div class="col-1">
             <div class="t2">Fecha</div>
         </div>
     </div>
     <div class="row px-3 py-1 my-3  user-li align-items-center" *ngFor="let report of reports">
+        <div class="col-2">
+            <div class="c1">{{report.type}}</div>
+        </div>
         <div class="col-2">
             <div class="c1">{{report.provincia}}</div>
         </div>
@@ -38,15 +41,14 @@
         <div class="col-2">
             <div class="c1">{{getReportState(report.state)}}</div>
         </div>
-        <div class="col-2">
+        <div class="col-1">
             <div class="c1">{{report.creationDate | date:'d/MM/yyyy'}}</div>
         </div>
         <div class="col-1 text-end">
             <div class="t2 text-center d-inline mx-1 table-btn">
                 <i class="fa-solid fa-pen-to-square" (click)="goToEditReport(report._id)"></i>
             </div>
-        </div>
-    
+        </div>    
     </div>
 </div>
 

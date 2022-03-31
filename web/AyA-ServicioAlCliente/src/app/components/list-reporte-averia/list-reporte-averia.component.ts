@@ -44,6 +44,7 @@ export class ListReporteAveriaComponent implements OnInit {
   }
 
   goToEditReport(_id: string){
-    this.router.navigate(['/']);
+    console.log(_id)
+    this.router.navigate(['/edit-reporte-averia', _id]);
   }
 }

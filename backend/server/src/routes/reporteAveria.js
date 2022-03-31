@@ -31,7 +31,7 @@ router.get('/', async(req, res) => {
 //S: single report
 router.get('/:_id', async(req, res) => {
     try {
-        const report = await ReporteAveria.findOne({ cedula: req.params._id });
+        const report = await ReporteAveria.findOne({ _id: req.params._id });
         res.json({
             success: true,
             message: 'Success',
@@ -105,7 +105,7 @@ router.patch('/', async(req, res) => {
         if (findReport != null) {
 
             const updateReport = await ReporteAveria.updateOne({_id: findReport._id}, {$set: {
-                state: req.body.user.state
+                state: req.body.state
             }})
             res.status(200).json({
                 success: true,
