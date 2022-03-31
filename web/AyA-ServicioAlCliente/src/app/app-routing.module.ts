@@ -11,6 +11,7 @@ import { UserMainPageComponent } from './components/users/user-main-page/user-ma
 import { RoleGuard } from './role.guard';
 import { FormReporteAveriaComponent } from './components/form-reporte-averia/form-reporte-averia.component';
 import { ReporteAveriasComponent } from './components/reporte-averias/reporte-averias.component';
+import { ListReporteAveriaComponent } from './components/list-reporte-averia/list-reporte-averia.component';
 
 const routes: Routes = [
   
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path:'user-main-page', 
     component:UserMainPageComponent,
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'list-reporte-averia',
+    component: ListReporteAveriaComponent,
     canActivate: [AuthenticationGuard]
   },
   {path:'**',pathMatch:'full',redirectTo:'consultar-facturacion'}
