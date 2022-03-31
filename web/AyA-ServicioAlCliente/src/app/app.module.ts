@@ -19,6 +19,7 @@ import { UserMainPageComponent } from './components/users/user-main-page/user-ma
 import { RoleGuard } from './role.guard';
 import { ReporteAveriasComponent } from './components/reporte-averias/reporte-averias.component';
 import { FormReporteAveriaComponent } from './components/form-reporte-averia/form-reporte-averia.component';
+import { ListReporteAveriaComponent } from './components/list-reporte-averia/list-reporte-averia.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormReporteAveriaComponent } from './components/form-reporte-averia/for
     UserMainPageComponent,
     DetallesFacturacionComponent,
     ReporteAveriasComponent,
-    FormReporteAveriaComponent
+    FormReporteAveriaComponent,
+    ListReporteAveriaComponent
   ],
   imports: [
     BrowserModule,
