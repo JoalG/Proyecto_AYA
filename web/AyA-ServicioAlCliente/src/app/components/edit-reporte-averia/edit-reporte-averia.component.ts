@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ReporteAveria } from 'src/app/models/reporte-averia';
 import { ReporteAveriaService } from 'src/app/services/reporte-averia.service';
 
@@ -15,7 +16,8 @@ export class EditReporteAveriaComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private readonly _reporteAveriaService: ReporteAveriaService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   report!: ReporteAveria;
@@ -74,11 +76,12 @@ export class EditReporteAveriaComponent implements OnInit {
   async updateReport(){
     let res = (await this._reporteAveriaService.updateReport(this.report._id!, this.myForm.get('state')?.value).toPromise());
     if(res?.success){
-      console.log("REPORTE ACTUALIZADO")
-      this.router.navigate(['/list-reporte-averia'])
+      this.router.navigate(['/list-reporte-averia']);
+      this.toastr.success('Estado actualizado');
     }
     else{
       console.log(res?.message)
+      this.toastr.error('No se pudo actualizar');
     }
   }
 

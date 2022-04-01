@@ -7,6 +7,7 @@ import {
   AppearanceAnimation,
   ConfirmBoxEvokeService
 } from '@costlydeveloper/ngx-awesome-popup';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class ListUsersComponent implements OnInit {
   constructor(
     private readonly _userService: UserService,
     private router: Router,
-    private confirmBoxEvokeService: ConfirmBoxEvokeService
+    private confirmBoxEvokeService: ConfirmBoxEvokeService,
+    private toastr: ToastrService
   ) { }
 
   users!: any[]
@@ -68,11 +70,11 @@ export class ListUsersComponent implements OnInit {
   async deleteUser(cedula: string){
     let res = (await this._userService.deleteUser(cedula).toPromise());
     if(res?.success){
-      console.log(res?.message);
       this.getUsers();
+      this.toastr.success("Usuario eliminado con éxito");
     }
     else{
-      console.log(res?.message);
+      this.toastr.error("Usuario no pudo ser eliminado");
     }
   }
 }
