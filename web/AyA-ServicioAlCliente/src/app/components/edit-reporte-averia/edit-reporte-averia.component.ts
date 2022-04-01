@@ -35,7 +35,8 @@ export class EditReporteAveriaComponent implements OnInit {
     description: ['', [Validators.required, Validators.maxLength(500)]],
     type: [''],
     state: [],
-    creationDate: ['']
+    creationDate: [''],
+    address: ['']
   });
 
   ngOnInit(): void {
@@ -67,6 +68,7 @@ export class EditReporteAveriaComponent implements OnInit {
     this.myForm.get('type')?.setValue(report.type);
     this.myForm.get('state')?.setValue(report.state);
     this.myForm.get('creationDate')?.setValue(report.creationDate);
+    this.myForm.get('address')?.setValue(report.address);
   }
 
   getImgSource(){

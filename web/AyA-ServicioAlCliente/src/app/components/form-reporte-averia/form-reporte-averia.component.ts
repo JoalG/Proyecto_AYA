@@ -1931,6 +1931,7 @@ export class FormReporteAveriaComponent implements OnInit {
     phoneNumber: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
     description: ['', [Validators.required, Validators.maxLength(500)]],
+    address: ['', [Validators.required, Validators.maxLength(500)]]
   });
   
   constructor(
@@ -2013,7 +2014,8 @@ export class FormReporteAveriaComponent implements OnInit {
         phoneNumber: this.myForm.value.phoneNumber,
         description: this.myForm.value.description,
         type: this.tipoFuga!,
-        state: 0
+        state: 0,
+        address: this.myForm.value.address
       }
 
       let res = (await this._reporteAveriaService.createReport(report).toPromise());
