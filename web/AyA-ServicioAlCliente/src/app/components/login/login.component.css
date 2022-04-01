@@ -1,4 +1,4 @@
-.consulta-facturacion{
+.login{
     background-color: #FFFFFF;
     color: #026BBF;
     width: 100%;
@@ -28,11 +28,21 @@ input{
     border: 1px solid #CED3D8;
     box-sizing: border-box;
     border-radius: 10px;
-    width: 350px;
+    width: 100%;
 }
 
 select{
     border: 1px solid #CED3D8;
     box-sizing: border-box;
     border-radius: 10px;
+}
+
+.form{
+    width: 50%;
+}
+
+@media only screen and (max-width:768px){
+    .form{
+        width: 75%;
+    }
 }
