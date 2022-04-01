@@ -54,6 +54,11 @@
     padding-left: 2.5rem;
 }
 
+.list-group-item:hover{
+    cursor: pointer;
+}
+
+
 hr{
     background-color: white;
     color: white;
