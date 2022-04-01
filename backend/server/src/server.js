@@ -17,9 +17,11 @@ app.use(express.json());
 // imports ROUTES
 const billRoute = require('./routes/bills');
 const usersRoute = require('./routes/users');
+const ReporteAveriaRoute = require('./routes/reporteAveria');
 
 app.use('/bills', billRoute);
 app.use('/users', usersRoute);
+app.use('/reportesAverias', ReporteAveriaRoute);
 
 
 mongoose.connect(

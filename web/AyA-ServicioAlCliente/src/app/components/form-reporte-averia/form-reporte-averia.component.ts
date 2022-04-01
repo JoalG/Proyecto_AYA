@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ReporteAveria } from 'src/app/models/reporte-averia';
+import { ReporteAveriaService } from 'src/app/services/reporte-averia.service';
 
 @Component({
   selector: 'app-form-reporte-averia',
@@ -1918,21 +1920,23 @@ export class FormReporteAveriaComponent implements OnInit {
   }
   
   myForm: FormGroup = this.fb.group({
-    province: ['', [Validators.required]],
+    provincia: ['', [Validators.required]],
     canton: ['', [Validators.required]],
-    district: ['', [Validators.required]],
+    distrito: ['', [Validators.required]],
    // address: ['', [Validators.required]],
     nis: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
-    firstName: ['', [Validators.required]],
-    lastName: ['', [Validators.required]],
-    phone: ['', [Validators.required]],
-    mail: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+    name: ['', [Validators.required]],
+    lastname: ['', [Validators.required]],
+    phoneNumber: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
     description: ['', [Validators.required, Validators.maxLength(500)]],
   });
   
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private readonly _reporteAveriaService: ReporteAveriaService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -1956,7 +1960,7 @@ export class FormReporteAveriaComponent implements OnInit {
   }
 
   getCantons(){
-    let province:string = this.myForm.get('province')?.value;
+    let province:string = this.myForm.get('provincia')?.value;
     
     return this.politicalDivisionCR.provincias.find(item => {
       return item.title == province;
@@ -1964,7 +1968,7 @@ export class FormReporteAveriaComponent implements OnInit {
   }
 
   getDistricts(){
-    let province:string = this.myForm.get('province')?.value;
+    let province:string = this.myForm.get('provincia')?.value;
     let canton:string = this.myForm.get('canton')?.value;
 
     return this.politicalDivisionCR.provincias.find(item => {
@@ -1976,11 +1980,11 @@ export class FormReporteAveriaComponent implements OnInit {
 
   changeProvince(){
     this.myForm.get('canton')?.setValue('');
-    this.myForm.get('district')?.setValue('');
+    this.myForm.get('distrito')?.setValue('');
   }
 
   changeCanton(){
-    this.myForm.get('district')?.setValue('');  
+    this.myForm.get('distrito')?.setValue('');  
   }
 
   findInvalidControls() {
@@ -1994,4 +1998,30 @@ export class FormReporteAveriaComponent implements OnInit {
     return invalid;
   }
 
+  async createReport(){
+    if (this.myForm.valid){
+      let report: ReporteAveria = {
+        provincia: this.myForm.value.provincia,
+        canton: this.myForm.value.canton,
+        distrito: this.myForm.value.distrito,
+        nis: this.myForm.value.nis,
+        name: this.myForm.value.name,
+        lastname: this.myForm.value.lastname,
+        email: this.myForm.value.email,
+        phoneNumber: this.myForm.value.phoneNumber,
+        description: this.myForm.value.description,
+        type: this.tipoFuga!,
+        state: 0
+      }
+
+      let res = (await this._reporteAveriaService.createReport(report).toPromise());
+      if(res?.success){
+        console.log("REPORTE CREADO")
+        this.router.navigate(['/consultar-facturacion'])
+      }
+      else{
+        console.log("ERROR. REPORTE NO CREADO")
+      }
+    }
+  }
 }
