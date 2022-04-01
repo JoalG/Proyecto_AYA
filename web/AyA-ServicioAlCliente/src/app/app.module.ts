@@ -27,6 +27,7 @@ import {
   NgxAwesomePopupModule,
   ToastNotificationConfigModule,
 } from '@costlydeveloper/ngx-awesome-popup';
+import { UserTramitesSolicitudesComponent } from './components/users/user-tramites-solicitudes/user-tramites-solicitudes.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {
     ReporteAveriasComponent,
     FormReporteAveriaComponent,
     ListReporteAveriaComponent,
-    EditReporteAveriaComponent
+    EditReporteAveriaComponent,
+    UserTramitesSolicitudesComponent
   ],
   imports: [
     BrowserModule,
