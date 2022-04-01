@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-user',
@@ -15,7 +16,8 @@ export class EditUserComponent implements OnInit {
     private readonly _userService: UserService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   originalCedula!: string|null
@@ -64,11 +66,12 @@ export class EditUserComponent implements OnInit {
 
       let res = (await this._userService.updateUser(this.originalCedula!, user).toPromise());
       if(res?.success){
-        console.log("USUARIO ACTUALIZADO")
-        this.router.navigate(['/list-users'])
+        this.router.navigate(['/list-users']);
+        this.toastr.success('Información de usuario actualizada con exíto');
       }
       else{
         console.log(res?.message)
+        this.toastr.error("Información de usuario no pudo ser actualizada");
       }
     }
   }

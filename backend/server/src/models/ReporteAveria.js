@@ -48,6 +48,10 @@ const ReporteAveriaSchema = mongoose.Schema({
     creationDate: {
         type: Date,
         required: true
+    },
+    address: {
+        type: String,
+        required: true
     }
 });
 

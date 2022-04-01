@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -23,7 +24,8 @@ export class CreateUserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private readonly _userService: UserService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -50,11 +52,11 @@ export class CreateUserComponent implements OnInit {
 
       let res = (await this._userService.createUser(user).toPromise());
       if(res?.success){
-        console.log("USUARIO CREADO")
-        this.router.navigate(['/list-users'])
+        this.router.navigate(['/list-users']);
+        this.toastr.success("Usuario creado con éxito");
       }
       else{
-        console.log("ERROR. USUARIO NO CREADO")
+        this.toastr.error("Usuario no pudo ser creado");
       }
     }
   }

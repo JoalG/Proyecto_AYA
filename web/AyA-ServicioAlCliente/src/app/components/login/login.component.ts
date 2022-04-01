@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     }
     else{
       console.log(res?.message);
-      this.toastr.error("Datos Incorrectos","No se pudo inciar sesión")
+      this.toastr.error("Datos Incorrectos","No se pudo inciar sesión");
     }
   }
 }

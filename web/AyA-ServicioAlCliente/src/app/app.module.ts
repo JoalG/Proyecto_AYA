@@ -21,6 +21,13 @@ import { ReporteAveriasComponent } from './components/reporte-averias/reporte-av
 import { FormReporteAveriaComponent } from './components/form-reporte-averia/form-reporte-averia.component';
 import { ListReporteAveriaComponent } from './components/list-reporte-averia/list-reporte-averia.component';
 import { EditReporteAveriaComponent } from './components/edit-reporte-averia/edit-reporte-averia.component';
+import {
+  ConfirmBoxConfigModule,
+  DialogConfigModule,
+  NgxAwesomePopupModule,
+  ToastNotificationConfigModule,
+} from '@costlydeveloper/ngx-awesome-popup';
+import { UserTramitesSolicitudesComponent } from './components/users/user-tramites-solicitudes/user-tramites-solicitudes.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +44,8 @@ import { EditReporteAveriaComponent } from './components/edit-reporte-averia/edi
     ReporteAveriasComponent,
     FormReporteAveriaComponent,
     ListReporteAveriaComponent,
-    EditReporteAveriaComponent
+    EditReporteAveriaComponent,
+    UserTramitesSolicitudesComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +54,10 @@ import { EditReporteAveriaComponent } from './components/edit-reporte-averia/edi
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    NgxAwesomePopupModule.forRoot(),
+    ConfirmBoxConfigModule.forRoot(),
+    DialogConfigModule.forRoot(), // optional
+    ToastNotificationConfigModule.forRoot(),
   ],
   providers: [
     AuthenticationGuard,

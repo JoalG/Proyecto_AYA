@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ReporteAveria } from 'src/app/models/reporte-averia';
 import { ReporteAveriaService } from 'src/app/services/reporte-averia.service';
 
@@ -1930,13 +1931,15 @@ export class FormReporteAveriaComponent implements OnInit {
     phoneNumber: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
     description: ['', [Validators.required, Validators.maxLength(500)]],
+    address: ['', [Validators.required, Validators.maxLength(500)]]
   });
   
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private readonly _reporteAveriaService: ReporteAveriaService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -2011,16 +2014,17 @@ export class FormReporteAveriaComponent implements OnInit {
         phoneNumber: this.myForm.value.phoneNumber,
         description: this.myForm.value.description,
         type: this.tipoFuga!,
-        state: 0
+        state: 0,
+        address: this.myForm.value.address
       }
 
       let res = (await this._reporteAveriaService.createReport(report).toPromise());
       if(res?.success){
-        console.log("REPORTE CREADO")
-        this.router.navigate(['/consultar-facturacion'])
+        this.router.navigate(['/consultar-facturacion']);
+        this.toastr.success('Reporte generado con éxito');
       }
       else{
-        console.log("ERROR. REPORTE NO CREADO")
+        this.toastr.error('Reporte no pudo ser generado')
       }
     }
   }
