@@ -1,6 +1,6 @@
 <div class="row text-center">
     <div class="px-5 py-3 t2 ">
-        {{tipoFuga}}
+        {{this.report.type}}
     </div>
     <div class="text-center">
         <img [src]="getImgSource()" class="averia-img" alt="...">
@@ -16,46 +16,31 @@
                 <div class="row form-row">
                     <div class="col-md-4">
                         <div class="c1 my-1">
-                            Seleccione la provincia
+                            Provincia
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <div class="form-group">
-                            <select class="form-select c1" id="exampleFormControlSelect1" (change)="changeProvince()" formControlName="provincia">
-                                <option value="" selected disabled hidden></option>    
-                                <option *ngFor="let province of getProvinces()" >{{province.title}}</option>
-                            </select>
-                        </div>
+                        <input type="text" maxlength="7" class="form-control c1 " formControlName="provincia" readonly>
                     </div>
                 </div>
                 <div class="row form-row">
                     <div class="col-md-4">
                         <div class="c1 my-1">
-                            Seleccione el cantón
+                            Cantón
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <div class="form-group">
-                            <select class="form-select c1" id="exampleFormControlSelect1" (change)="changeCanton()" [attr.disabled]="(myForm.get('province')?.invalid)? true: null" formControlName="canton">
-                                <option value="" selected disabled hidden></option>    
-                                <option *ngFor="let province of getCantons()">{{province.title}}</option>
-                            </select>
-                        </div>
+                        <input type="text" maxlength="7" class="form-control c1 " formControlName="canton" readonly>
                     </div>
                 </div>        
                 <div class="row form-row">
                     <div class="col-md-4">
                         <div class="c1 my-1">
-                            Seleccione el distrito
+                            Distrito
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <div class="form-group">
-                            <select class="form-select c1" id="exampleFormControlSelect1" [attr.disabled]="(myForm.get('canton')?.invalid)? true: null" formControlName="distrito"  >
-                                <option value="" selected disabled hidden></option>    
-                                <option *ngFor="let province of getDistricts()">{{province.title}}</option>
-                            </select>
-                        </div>
+                        <input type="text" maxlength="7" class="form-control c1 " formControlName="distrito" readonly>
                     </div>
                 </div>        
                 <div class="row form-row">
@@ -65,7 +50,7 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="7" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="nis">
+                        <input type="text" maxlength="7" class="form-control c1 " formControlName="nis" readonly>
                     </div>
                 </div>        
                 <div class="row form-row">
@@ -75,7 +60,7 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="50" class="form-control c1 " formControlName="name">
+                        <input type="text" maxlength="50" class="form-control c1 " formControlName="name" readonly>
                     </div>
                 </div>   
                 <div class="row form-row">
@@ -85,7 +70,7 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="50" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="lastname">
+                        <input type="text" maxlength="50" class="form-control c1 " formControlName="lastname" readonly>
                     </div>
                 </div>      
                 <div class="row form-row">
@@ -95,7 +80,7 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="8" class="form-control c1 " formControlName="phoneNumber">
+                        <input type="text" maxlength="8" class="form-control c1 " formControlName="phoneNumber" readonly>
                     </div>
                 </div>      
                 <div class="row form-row">
@@ -105,7 +90,7 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control c1 " formControlName="email">
+                        <input type="text" class="form-control c1 " formControlName="email" readonly>
                     </div>
                 </div>      
                 <div class="row form-row">
@@ -115,12 +100,27 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <textarea class="form-control" maxlength="500" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+                        <textarea class="form-control" maxlength="500" id="exampleFormControlTextarea1" rows="3" formControlName="description" readonly></textarea>
                     </div>
-                </div>      
+                </div>
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Estado
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-select c1" id="exampleFormControlSelect1" formControlName="state"  >
+                            <option disabled selected value></option>
+                            <option value="0">Pendiente</option>
+                            <option value="1">En Revisión</option>
+                            <option value="2">Solucionado</option>
+                        </select>
+                    </div>
+                </div>            
                 
                 <div class="text-center">
-                    <button type="submit" value="submit" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null" (click)="createReport()">Consultar</button>
+                    <button type="submit" value="submit" class="btn btn-normal sb my-3" (click)="updateReport()">Actualizar</button>
                 </div>
 
             </form>
