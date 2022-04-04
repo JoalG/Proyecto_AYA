@@ -8,20 +8,29 @@
                 <div class="d-flex justify-content-center mt-3 mb-5">
                     
                     <form class="form" [formGroup]="myForm">
-                        <div class="c1 text-center my-3">
-                            Ingresar correo electrónico
-                        </div> 
-                        <input type="email" maxlength="254" class="form-control c1" formControlName="email">
-    
-                        <div class="c1 text-center my-3">
-                            Ingresar contraseña
-                        </div>  
-                        <input type="password" class="form-control c1" [attr.disabled]="(myForm.get('email')?.invalid)? true: null" formControlName="password" >
-                        
+                        <div>
+                            <div class="c1 text-center my-3">
+                                Ingresar correo electrónico
+                            </div> 
+                            <input type="text" maxlength="254" class="form-control c1" [ngClass]="validField('email')"formControlName="email">
+                            <div class="invalid-feedback">
+                                Debe ingresar un correo valido
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="c1 text-center my-3">
+                                Ingresar contraseña
+                            </div>  
+                            <input type="password" class="form-control c1" [ngClass]="validField('password')" [attr.disabled]="(myForm.get('email')?.invalid)? true: null" formControlName="password" >
+                            <div class="invalid-feedback">
+                                Debe ingresar la contraseña
+                            </div>
+                        </div>
+
                         <div class="col text-center">
                             <button type="submit" value="submit" (click)="login()" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null">Iniciar Sesión</button>
                         </div>
-    
                     </form>
                 </div>
             </div>

@@ -15,7 +15,10 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="50" class="form-control c1 " formControlName="name">
+                        <input type="text" maxlength="50" class="form-control c1 " [ngClass]="validField('name')" formControlName="name">
+                        <div class="invalid-feedback">
+                            Debe ingresar el nombre
+                        </div>
                     </div>
                 </div>   
                 <div class="row form-row">
@@ -25,7 +28,10 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="50" class="form-control c1 " formControlName="lastname">
+                        <input type="text" maxlength="50" class="form-control c1 " [ngClass]="validField('lastname')" formControlName="lastname">
+                        <div class="invalid-feedback">
+                            Debe ingresar los apellidos
+                        </div>
                     </div>
                 </div>           
                 <div class="row form-row">
@@ -35,8 +41,11 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control c1 " formControlName="email">
-                    </div>
+                        <input type="text" class="form-control c1 " [ngClass]="validField('email')" formControlName="email">
+                        <div class="invalid-feedback">
+                            Debe ingresar un correo valido
+                        </div>
+                    </div> 
                 </div>      
                 <div class="row form-row">
                     <div class="col-md-4">
@@ -45,7 +54,10 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="9" class="form-control c1 " formControlName="cedula">
+                        <input type="text" maxlength="9" class="form-control c1 " [ngClass]="validField('cedula')" formControlName="cedula">
+                        <div class="invalid-feedback">
+                            Debe ingresar la cédula (9 dígitos)
+                        </div>
                     </div>
                 </div>  
                 <div class="row form-row">
@@ -55,13 +67,16 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <select class="form-select c1" id="exampleFormControlSelect1" formControlName="userType"  >
+                        <select class="form-select c1" id="exampleFormControlSelect1" [ngClass]="validField('userType')" formControlName="userType"  >
                             <option disabled selected value></option>
                             <option value="0">Super Administrador</option>
                             <option value="1">Servicio al cliente</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Debe seleccionar el tipo de usuario
+                        </div>
                     </div>
-                </div>  
+                </div> 
                 <div class="text-center">
                     <button type="submit" value="submit" (click)="updateUser()" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null">Guardar cambios</button>
                 </div>

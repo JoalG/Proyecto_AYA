@@ -40,4 +40,11 @@ export class LoginComponent implements OnInit {
       this.toastr.error("Datos Incorrectos","No se pudo inciar sesión");
     }
   }
+
+  validField(id:string){
+    if(this.myForm.get(id)?.touched){
+      return (this.myForm.get(id)?.valid)?'is-valid':'is-invalid';
+    }
+    return '';
+  }
 }

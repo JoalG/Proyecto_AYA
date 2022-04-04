@@ -21,10 +21,13 @@
                     </div>
                     <div class="col-md-8">
                         <div class="form-group">
-                            <select class="form-select c1" id="exampleFormControlSelect1" (change)="changeProvince()" formControlName="provincia">
+                            <select class="form-select c1" [ngClass]="validField('provincia')" id="exampleFormControlSelect1" (change)="changeProvince()" formControlName="provincia">
                                 <option value="" selected disabled hidden></option>    
                                 <option *ngFor="let province of getProvinces()" >{{province.title}}</option>
                             </select>
+                            <div class="invalid-feedback">
+                                Debe seleccionar la provincia
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -36,10 +39,13 @@
                     </div>
                     <div class="col-md-8">
                         <div class="form-group">
-                            <select class="form-select c1" id="exampleFormControlSelect1" (change)="changeCanton()" [attr.disabled]="(myForm.get('province')?.invalid)? true: null" formControlName="canton">
+                            <select class="form-select c1" [ngClass]="validField('canton')" id="exampleFormControlSelect1" (change)="changeCanton()" [attr.disabled]="(myForm.get('provincia')?.invalid)? true: null" formControlName="canton">
                                 <option value="" selected disabled hidden></option>    
                                 <option *ngFor="let province of getCantons()">{{province.title}}</option>
                             </select>
+                            <div class="invalid-feedback">
+                                Debe seleccionar el cantón
+                            </div>
                         </div>
                     </div>
                 </div>        
@@ -51,10 +57,13 @@
                     </div>
                     <div class="col-md-8">
                         <div class="form-group">
-                            <select class="form-select c1" id="exampleFormControlSelect1" [attr.disabled]="(myForm.get('canton')?.invalid)? true: null" formControlName="distrito"  >
+                            <select class="form-select c1" [ngClass]="validField('distrito')" id="exampleFormControlSelect1" [attr.disabled]="(myForm.get('canton')?.invalid)? true: null" formControlName="distrito"  >
                                 <option value="" selected disabled hidden></option>    
                                 <option *ngFor="let province of getDistricts()">{{province.title}}</option>
                             </select>
+                            <div class="invalid-feedback">
+                                Debe seleccionar el distrito
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,7 +74,10 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <textarea class="form-control" maxlength="500" id="exampleFormControlTextarea1" rows="3" formControlName="address"></textarea>
+                        <textarea class="form-control" [ngClass]="validField('address')" maxlength="500" id="exampleFormControlTextarea1" rows="3" formControlName="address"></textarea>
+                        <div class="invalid-feedback">
+                            Debe ingresar la dirección 
+                        </div>
                     </div>
                 </div>             
                 <div class="row form-row">
@@ -75,7 +87,10 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="7" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="nis">
+                        <input type="text" maxlength="7" class="form-control c1 " [ngClass]="validField('nis')" (keypress)="isNumberKey($event)" formControlName="nis">
+                        <div class="invalid-feedback">
+                            Debe ingresar su número NIS (7 dígitos)
+                        </div>
                     </div>
                 </div>        
                 <div class="row form-row">
@@ -85,7 +100,10 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="50" class="form-control c1 " formControlName="name">
+                        <input type="text" maxlength="50" class="form-control c1 " [ngClass]="validField('name')" formControlName="name">
+                        <div class="invalid-feedback">
+                            Debe ingresar su nombre
+                        </div>
                     </div>
                 </div>   
                 <div class="row form-row">
@@ -95,7 +113,10 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="50" class="form-control c1 " formControlName="lastname">
+                        <input type="text" maxlength="50" class="form-control c1 " [ngClass]="validField('lastname')" formControlName="lastname">
+                        <div class="invalid-feedback">
+                            Debe ingresar sus apellidos 
+                        </div>
                     </div>
                 </div>      
                 <div class="row form-row">
@@ -105,7 +126,10 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="8" class="form-control c1 " formControlName="phoneNumber">
+                        <input type="text" maxlength="8" class="form-control c1 " [ngClass]="validField('phoneNumber')" formControlName="phoneNumber">
+                        <div class="invalid-feedback">
+                            Debe ingresar su número de teléfono (8 dígitos)
+                        </div>
                     </div>
                 </div>      
                 <div class="row form-row">
@@ -115,7 +139,10 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control c1 " formControlName="email">
+                        <input type="text" class="form-control c1 " [ngClass]="validField('email')" formControlName="email">
+                        <div class="invalid-feedback">
+                            Debe ingresar un correo valido
+                        </div>
                     </div>
                 </div>      
                 <div class="row form-row">
@@ -125,7 +152,10 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <textarea class="form-control" maxlength="500" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+                        <textarea class="form-control" [ngClass]="validField('description')" maxlength="500" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+                        <div class="invalid-feedback">
+                            Debe ingresar la descripción
+                        </div>
                     </div>
                 </div>      
                 

@@ -60,4 +60,12 @@ export class CreateUserComponent implements OnInit {
       }
     }
   }
+  
+  validField(id:string){
+    if(this.myForm.get(id)?.touched){
+      return (this.myForm.get(id)?.valid)?'is-valid':'is-invalid';
+    }
+    return '';
+  }
+  
 }
