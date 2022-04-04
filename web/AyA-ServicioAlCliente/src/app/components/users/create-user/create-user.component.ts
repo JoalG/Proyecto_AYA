@@ -67,5 +67,5 @@ export class CreateUserComponent implements OnInit {
     }
     return '';
   }
-  
+
 }
