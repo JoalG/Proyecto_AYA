@@ -57,7 +57,17 @@
                             </select>
                         </div>
                     </div>
-                </div>        
+                </div>
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Dirección exacta
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control" maxlength="500" id="exampleFormControlTextarea1" rows="3" formControlName="address"></textarea>
+                    </div>
+                </div>             
                 <div class="row form-row">
                     <div class="col-md-4">
                         <div class="c1 my-1">
@@ -85,7 +95,7 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <input type="text" maxlength="50" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="lastname">
+                        <input type="text" maxlength="50" class="form-control c1 " formControlName="lastname">
                     </div>
                 </div>      
                 <div class="row form-row">
@@ -120,7 +130,7 @@
                 </div>      
                 
                 <div class="text-center">
-                    <button type="submit" value="submit" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null" (click)="createReport()">Consultar</button>
+                    <button type="submit" value="submit" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null" (click)="createReport()">Generar reporte</button>
                 </div>
 
             </form>

@@ -65,7 +65,8 @@ router.post('/', async(req, res) => {
             description: req.body.description,
             type: req.body.type,
             state: req.body.state,
-            creationDate: new Date()
+            creationDate: new Date(),
+            address: req.body.address
         });
                 
         await report.save(function(err) {

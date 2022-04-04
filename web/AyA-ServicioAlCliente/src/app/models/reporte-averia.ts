@@ -11,5 +11,6 @@ export interface ReporteAveria{
     description: string,
     type: string,
     state: number,
-    creationDate?: Date
+    creationDate?: Date,
+    address: string
 }

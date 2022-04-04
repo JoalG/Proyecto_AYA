@@ -25,6 +25,10 @@ export class UserMainPageComponent implements OnInit {
     this.router.navigate(['/list-users']);
   }
 
+  goToTramitesSolicitudes(){
+    this.router.navigate(['/user-tramites-solicitudes']);
+  }
+
   setUserType(){
     this.userType = this._userService.getUserType();
   }

@@ -13,6 +13,7 @@ import { FormReporteAveriaComponent } from './components/form-reporte-averia/for
 import { ReporteAveriasComponent } from './components/reporte-averias/reporte-averias.component';
 import { ListReporteAveriaComponent } from './components/list-reporte-averia/list-reporte-averia.component';
 import { EditReporteAveriaComponent } from './components/edit-reporte-averia/edit-reporte-averia.component';
+import { UserTramitesSolicitudesComponent } from './components/users/user-tramites-solicitudes/user-tramites-solicitudes.component';
 
 const routes: Routes = [
   
@@ -49,6 +50,11 @@ const routes: Routes = [
   {
     path: 'edit-reporte-averia/:_id',
     component: EditReporteAveriaComponent,
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'user-tramites-solicitudes',
+    component: UserTramitesSolicitudesComponent,
     canActivate: [AuthenticationGuard]
   },
   {path:'**',pathMatch:'full',redirectTo:'consultar-facturacion'}
