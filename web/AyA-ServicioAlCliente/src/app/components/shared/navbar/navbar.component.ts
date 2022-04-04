@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private readonly _userService: UserService,
+    private toastr: ToastrService,
     private router: Router
   ) { }
 
@@ -20,6 +22,7 @@ export class NavbarComponent implements OnInit {
   logOut(){
     this._userService.logout();
     this.router.navigate(['/login']);
+    this.toastr.success("Hasta luego","Sesión cerrada con éxito");
   }
 
   isLoggedIn(){

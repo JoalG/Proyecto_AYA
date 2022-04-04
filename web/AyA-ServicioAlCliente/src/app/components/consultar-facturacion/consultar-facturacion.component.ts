@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { identity } from 'rxjs';
 import { CustomResponse } from 'src/app/models/custom-response.model';
 import { BillsService } from 'src/app/services/bills.service';
@@ -21,6 +22,7 @@ export class ConsultarFacturacionComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private readonly _billService: BillsService,
+    private toastr: ToastrService,
     private router: Router
     ) { }
 
@@ -42,12 +44,11 @@ export class ConsultarFacturacionComponent implements OnInit {
     let bill = (await this._billService.getCollectionBill(nis, clientIdType, clientId).toPromise());
     console.log(bill)
     if(bill!.success==true){
-      console.log(bill?.data)
       this._billService.set_sharingBill(bill?.data);
       this.router.navigate(['/detalles-facturacion'])
     }
     else{
-      console.log(bill?.message)
+      this.toastr.info("El cliente no tiene facturación al cobro", `NIS ${nis}`)
     }
   }
 
