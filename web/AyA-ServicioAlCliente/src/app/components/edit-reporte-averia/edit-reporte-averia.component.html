@@ -120,12 +120,15 @@
                         </div> 
                     </div>
                     <div class="col-md-8">
-                        <select class="form-select c1" id="exampleFormControlSelect1" formControlName="state"  >
+                        <select class="form-select c1" [ngClass]="validField('state')" id="exampleFormControlSelect1" formControlName="state"  >
                             <option disabled selected value></option>
                             <option value="0">Pendiente</option>
                             <option value="1">En Revisión</option>
                             <option value="2">Solucionado</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Debe seleccionar el estado
+                        </div>
                     </div>
                 </div>            
                 

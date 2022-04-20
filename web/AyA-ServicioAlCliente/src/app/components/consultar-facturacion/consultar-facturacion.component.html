@@ -8,35 +8,49 @@
                 <div class="d-flex justify-content-center">
                     
                     <form class="px-3" [formGroup]="myForm">
-                        <div class="c1 text-center my-3">
-                            Ingrese el numero NIS
-                        </div> 
-                        <input type="text" maxlength="7" class="form-control c1 " (keypress)="isNumberKey($event)" formControlName="nis">
-                        <div class="c3 text-center mt-1 mb-3">
-                           <u>¿No sabes cuál es tu número NIS?</u>               
-                        </div> 
-    
-                        <div class="c1 text-center my-3">
-                            Tipo de identificación
-                        </div>  
-                        <div class="form-group">
-                            <select class="form-select c1" id="exampleFormControlSelect1" [attr.disabled]="(myForm.get('nis')?.invalid)? true: null" formControlName="clientIdType"  >
-                                <option disabled selected value></option>
-                                <option>Cédula de residente</option>
-                                <option>Cédula de identidad</option>
-                                <option>Cédula jurídica</option>
-                            </select>
+                        <div>
+                            <div class="c1 text-center my-3">
+                                Ingrese el número NIS
+                            </div> 
+                            <input type="text" maxlength="7" class="form-control c1" [ngClass]="validField('nis')" (keypress)="isNumberKey($event)" formControlName="nis">
+                            <div class="invalid-feedback">
+                                Debe ingresar su número NIS (7 dígitos)
+                            </div>
+                            <div class="c3 text-center mt-1 mb-3">
+                               <u>¿No sabes cuál es tu número NIS?</u>               
+                            </div> 
+                        </div>
+
+                        <div>
+                            <div class="c1 text-center my-3">
+                                Tipo de identificación
+                            </div>  
+                            <div class="form-group">
+                                <select class="form-select c1" [ngClass]="validField('clientIdType')" id="exampleFormControlSelect1" [attr.disabled]="(myForm.get('nis')?.invalid)? true: null" formControlName="clientIdType"  >
+                                    <option disabled selected value></option>
+                                    <option>Cédula de residente</option>
+                                    <option>Cédula de identidad</option>
+                                    <option>Cédula jurídica</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Debe seleccionar el tipo de identificación
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="c1 text-center my-3">
+                                Ingresar identificación
+                            </div>  
+                            <input type="text" maxlength="9" class="form-control c1" [ngClass]="validField('clientId')" (keypress)="isNumberKey($event)" [attr.disabled]="(myForm.get('clientIdType')?.invalid)? true: null" formControlName="clientId" >
+                            <div class="invalid-feedback">
+                                Debe ingresar su identificación (8 dígitos)
+                            </div>
                         </div>
     
-                        <div class="c1 text-center my-3">
-                            Ingresar identificación
-                        </div>  
-                        <input type="text" maxlength="9" class="form-control c1" (keypress)="isNumberKey($event)" [attr.disabled]="(myForm.get('clientIdType')?.invalid)? true: null" formControlName="clientId" >
-                        
                         <div class="col text-center">
                             <button type="submit" value="submit" (click)="getCollectionBill()" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null">Consultar</button>
                         </div>
-    
                     </form>
                 </div>
             </div>

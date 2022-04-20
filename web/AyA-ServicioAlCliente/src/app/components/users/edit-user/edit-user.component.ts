@@ -34,6 +34,14 @@ export class EditUserComponent implements OnInit {
     this.setUserInfo()
   }
 
+  isNumberKey(evt:KeyboardEvent) {
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+    
+  }
+
   async setUserInfo(){
     let res = (await this._userService.getUser(this.originalCedula!).toPromise());
     if(res?.success){
@@ -75,4 +83,12 @@ export class EditUserComponent implements OnInit {
       }
     }
   }
+
+  validField(id:string){
+    if(this.myForm.get(id)?.touched){
+      return (this.myForm.get(id)?.valid)?'is-valid':'is-invalid';
+    }
+    return '';
+  }
+
 }
