@@ -9,11 +9,11 @@ const SuspensionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    fecha_init: {
+    fechaInit: {
         type: Date,
         required: true
     },
-    fecha_fin: {
+    fechaFin: {
         type: Date,
         required: true
     },
