@@ -28,6 +28,8 @@ import {
   ToastNotificationConfigModule,
 } from '@costlydeveloper/ngx-awesome-popup';
 import { UserTramitesSolicitudesComponent } from './components/users/user-tramites-solicitudes/user-tramites-solicitudes.component';
+import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
+import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { UserTramitesSolicitudesComponent } from './components/users/user-tramit
     FormReporteAveriaComponent,
     ListReporteAveriaComponent,
     EditReporteAveriaComponent,
-    UserTramitesSolicitudesComponent
+    UserTramitesSolicitudesComponent,
+    ListSuspensionsComponent,
+    CreateSuspensionComponent
   ],
   imports: [
     BrowserModule,
