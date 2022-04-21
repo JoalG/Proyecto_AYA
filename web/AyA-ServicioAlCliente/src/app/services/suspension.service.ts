@@ -10,7 +10,7 @@ import { Suspension } from '../models/suspension';
 })
 export class SuspensionService {
 
-  URL_API = 'http://localhost:3000/reportesAverias';
+  URL_API = 'http://localhost:3000/suspensions';
 
   constructor(
     private http:HttpClient, 
