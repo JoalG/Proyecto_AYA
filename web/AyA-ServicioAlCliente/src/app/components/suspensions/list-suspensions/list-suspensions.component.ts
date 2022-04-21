@@ -38,7 +38,7 @@ export class ListSuspensionsComponent implements OnInit {
     }
   
     goToCreateSuspension(){
-      //this.router.navigate(['/create-suspension']);
+      this.router.navigate(['/create-suspension']);
     }
   
     confirmDeleteBox(_id: string) {

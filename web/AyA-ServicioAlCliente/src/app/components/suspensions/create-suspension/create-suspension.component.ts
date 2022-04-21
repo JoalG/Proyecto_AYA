@@ -1991,23 +1991,30 @@ export class CreateSuspensionComponent implements OnInit {
   }
 
   async createSuspension(){
-    if (this.myForm.valid){
-      let suspension: Suspension = {
-        provincia: this.myForm.value.provincia,
-        canton: this.myForm.value.canton,
-        fechaInit: this.myForm.value.fechaInit,
-        fechaFin: this.myForm.value.fechaFin,
-        description: this.myForm.value.description
-      }
 
-      let res = (await this._suspensionService.createSuspension(suspension).toPromise());
-      if(res?.success){
-        this.router.navigate(['/list-suspensions']);
-        this.toastr.success('Suspensión generada con éxita');
+    if (this.myForm.valid){
+      if (this.isFechaInitFinValid()){
+        let suspension: Suspension = {
+          provincia: this.myForm.value.provincia,
+          canton: this.myForm.value.canton,
+          fechaInit: this.myForm.value.fechaInit,
+          fechaFin: this.myForm.value.fechaFin,
+          description: this.myForm.value.description
+        }
+  
+        let res = (await this._suspensionService.createSuspension(suspension).toPromise());
+        if(res?.success){
+          this.router.navigate(['/list-suspensions']);
+          this.toastr.success('Suspensión generada con éxita');
+        }
+        else{
+          this.toastr.error('Suspensión no pudo ser generada')
+        }
       }
       else{
-        this.toastr.error('Suspensión no pudo ser generada')
+        this.toastr.error('La fecha de inicio deber ser menor a la fecha de fin')
       }
+      
     }
   }
 
@@ -2016,6 +2023,17 @@ export class CreateSuspensionComponent implements OnInit {
       return (this.myForm.get(id)?.valid)?'is-valid':'is-invalid';
     }
     return '';
+  }
+
+  fechaValidField(id:string){
+    if(this.myForm.get(id)?.touched){
+      return (this.myForm.get(id)?.valid && this.isFechaInitFinValid())?'is-valid':'is-invalid';
+    }
+    return '';
+  }
+
+  isFechaInitFinValid():boolean{
+    return this.myForm.get('fechaInit')?.value <= this.myForm.get('fechaFin')?.value;
   }
 
 }
