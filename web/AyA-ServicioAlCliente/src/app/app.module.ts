@@ -30,6 +30,7 @@ import {
 import { UserTramitesSolicitudesComponent } from './components/users/user-tramites-solicitudes/user-tramites-solicitudes.component';
 import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
+import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { CreateSuspensionComponent } from './components/suspensions/create-suspe
     EditReporteAveriaComponent,
     UserTramitesSolicitudesComponent,
     ListSuspensionsComponent,
-    CreateSuspensionComponent
+    CreateSuspensionComponent,
+    EditSuspensionComponent
   ],
   imports: [
     BrowserModule,
