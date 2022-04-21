@@ -5,5 +5,5 @@ export interface Suspension{
     fechaInit: Date,
     fechaFin: Date,
     description: string,
-    deleted: boolean
+    deleted?: boolean
 }
