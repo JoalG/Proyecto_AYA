@@ -22,7 +22,7 @@ export class SuspensionService {
   }
 
   getSuspensionsClients(provincia: string, canton: string):Observable<CustomResponse>{
-    return this.http.get<CustomResponse>(this.URL_API + `/?provincia=${provincia}&canton=${canton}`);
+    return this.http.get<CustomResponse>(this.URL_API + `/${provincia}/${canton}`);
   }
 
   getSuspensions():Observable<CustomResponse>{
@@ -34,6 +34,6 @@ export class SuspensionService {
   }
 
   deleteSuspension(_id: string):Observable<CustomResponse>{
-    return this.http.patch<CustomResponse>(this.URL_API + '/', {'_id': _id});
+    return this.http.patch<CustomResponse>(this.URL_API + '/delete', {'_id': _id});
   }
 }
