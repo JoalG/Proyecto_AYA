@@ -29,7 +29,7 @@ router.get('/', async(req, res) => {
 //S: suspensiones
 router.get('/:provincia/:canton', async(req, res) => {
     try {
-        const suspensions = await Suspension.find({ provincia: req.params.provincia, canton: req.params.canton, deleted: false });
+        const suspensions = await Suspension.find({ provincia: req.params.provincia, canton: req.params.canton, deleted: false, fechaFin: {'$gte': new Date()} });
         res.json({
             success: true,
             message: 'Success',
