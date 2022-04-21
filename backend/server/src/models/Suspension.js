@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ReporteAveriaSchema = mongoose.Schema({
+const SuspensionSchema = mongoose.Schema({
     provincia:{
         type: String,
         required: true
@@ -9,50 +9,22 @@ const ReporteAveriaSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    distrito:{
-        type: String,
-        required: true
-    },
-    nis:{
-        type: String,
-        required: true
-    },
-    name:{
-        type: String,
-        required: true
-    },
-    lastname:{
-        type: String,
-        required: true
-    },
-    phoneNumber:{
-        type: String,
-        required: true
-    },
-    email:{
-        type: String,
-        required: true
-    },
-    description:{
-        type: String,
-        required: true
-    },
-    type:{
-        type: String,
-        required: true
-    },
-    state:{
-        type: Number,
-        required: true
-    },
-    creationDate: {
+    fecha_init: {
         type: Date,
         required: true
     },
-    address: {
+    fecha_fin: {
+        type: Date,
+        required: true
+    },
+    description: {
         type: String,
+        required: true
+    },
+    deleted: {
+        type: Boolean,
         required: true
     }
 });
 
-module.exports = mongoose.model('ReporteAveria', ReporteAveriaSchema);
+module.exports = mongoose.model('Suspension', SuspensionSchema);
