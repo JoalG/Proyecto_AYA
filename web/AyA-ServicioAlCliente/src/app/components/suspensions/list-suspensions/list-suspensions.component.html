@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="px-5 py-3 t2 text-center">
+        Suspensiones de servicio
+    </div>
+</div>
+
+<div class="custom-table px-3 ms-3 ms-sm-0  mt-3">
+    <div class="row px-3 py-1 user-li user-li align-items-center">
+        <div class="col-3">
+            <div class="t2">Descripción</div>
+        </div>
+        <div class="col-2">
+            <div class="t2">Provincia</div>
+        </div>
+        <div class="col-2">
+            <div class="t2">Cantón</div>
+        </div>
+        <div class="col-2">
+            <div class="t2">Inicio</div>
+        </div>
+        <div class="col-2">
+            <div class="t2">Fin</div>
+        </div>
+        <div class="col-1 text-end">
+            <div class="t1 d-inline mx-1 table-btn">
+                <i class="fa-solid fa-square-plus" (click)="goToCreateSuspension()"></i>
+            </div>
+        </div>
+    </div>
+    <div class="row px-3 py-1 my-3  user-li align-items-center" *ngFor="let suspension of suspensions">
+        <div class="col-3">
+            <div class="c1">{{suspension.description}}</div>
+        </div>
+        <div class="col-2">
+            <div class="c1">{{suspension.provincia}}</div>
+        </div>
+        <div class="col-2">
+            <div class="c1">{{suspension.canton}}</div>
+        </div>
+        <div class="col-2">
+            <div class="c1">{{suspension.fechaInit | date:'d/MM/yyyy'}}</div>
+        </div>
+        <div class="col-2">
+            <div class="c1">{{suspension.fechaFin | date:'d/MM/yyyy'}}</div>
+        </div>
+        <div class="col-1 text-end">
+            <div class="t2 text-center d-inline mx-1 table-btn">
+                <i class="fa-solid fa-pen-to-square" (click)="goToEditSuspension(suspension._id)"></i>
+            </div>
+            <div class="t2 text-center d-inline mx-1 table-btn">
+                <i class="fa-solid fa-trash-can" (click)="confirmDeleteBox(suspension._id)"></i>
+            </div>
+        </div>
+    
+    </div>
+</div>
+
+
+
+

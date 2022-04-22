@@ -18,11 +18,12 @@ app.use(express.json());
 const billRoute = require('./routes/bills');
 const usersRoute = require('./routes/users');
 const ReporteAveriaRoute = require('./routes/reporteAveria');
+const suspensionRoute = require('./routes/suspensions');
 
 app.use('/bills', billRoute);
 app.use('/users', usersRoute);
 app.use('/reportesAverias', ReporteAveriaRoute);
-
+app.use('/suspensions', suspensionRoute);
 
 mongoose.connect(
     process.env.DB_CONNECTION, {

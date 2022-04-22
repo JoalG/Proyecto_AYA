@@ -16,6 +16,8 @@ import { EditReporteAveriaComponent } from './components/edit-reporte-averia/edi
 import { UserTramitesSolicitudesComponent } from './components/users/user-tramites-solicitudes/user-tramites-solicitudes.component';
 import { TramitesProyectosComponent } from './components/tramites-proyectos/tramites-proyectos.component';
 import { SuspensionesDelServicioComponent } from './components/suspensiones-del-servicio/suspensiones-del-servicio.component';
+import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
+import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
 
 const routes: Routes = [
   
@@ -59,6 +61,16 @@ const routes: Routes = [
   {
     path: 'user-tramites-solicitudes',
     component: UserTramitesSolicitudesComponent,
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'list-suspensions',
+    component: ListSuspensionsComponent,
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'create-suspension',
+    component: CreateSuspensionComponent,
     canActivate: [AuthenticationGuard]
   },
   {path:'**',pathMatch:'full',redirectTo:'consultar-facturacion'}
