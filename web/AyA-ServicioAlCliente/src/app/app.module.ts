@@ -32,6 +32,7 @@ import { TramitesProyectosComponent } from './components/tramites-proyectos/tram
 import { SuspensionesDelServicioComponent } from './components/suspensiones-del-servicio/suspensiones-del-servicio.component';
 import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
+import { DetallesSuspensionComponent } from './components/detalles-suspension/detalles-suspension.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { CreateSuspensionComponent } from './components/suspensions/create-suspe
     CreateSuspensionComponent,
     UserTramitesSolicitudesComponent,
     TramitesProyectosComponent,
-    SuspensionesDelServicioComponent
+    SuspensionesDelServicioComponent,
+    DetallesSuspensionComponent
   ],
   imports: [
     BrowserModule,
