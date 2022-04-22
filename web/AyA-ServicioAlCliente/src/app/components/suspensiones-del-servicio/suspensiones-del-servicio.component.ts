@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SuspensionService } from 'src/app/services/suspension.service';
 
 @Component({
   selector: 'app-suspensiones-del-servicio',
@@ -1914,7 +1915,7 @@ export class SuspensionesDelServicioComponent implements OnInit {
     ]
   }
 
-  suspensiones = [{},{},{},{},{},{},{},{},{},{},{},{}];
+  suspensiones!: any[];
 
   myForm: FormGroup = this.fb.group({
     provincia: ['', [Validators.required]],
@@ -1922,7 +1923,8 @@ export class SuspensionesDelServicioComponent implements OnInit {
   });
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private readonly _suspensionService: SuspensionService
   ) {}
 
   ngOnInit(): void {
@@ -1945,8 +1947,13 @@ export class SuspensionesDelServicioComponent implements OnInit {
     this.myForm.get('distrito')?.setValue('');
   }
 
-  changeCanton(){
-
+  async changeCanton(){
+    let suspensiones = (await this._suspensionService.getSuspensionsClients(this.myForm.get('provincia')?.value, this.myForm.get('canton')?.value).toPromise())
+    if(suspensiones!.success==true){
+      this.suspensiones = suspensiones?.data
+    }
+    else{
+    }
   }
 
   findInvalidControls() {
