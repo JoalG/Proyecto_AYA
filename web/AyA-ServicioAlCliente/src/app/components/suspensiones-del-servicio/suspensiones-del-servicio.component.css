@@ -44,8 +44,19 @@ select{
     border-radius: 10px;
 }
 
+.supension-header{
+    border-radius: 10px;
+    height: 40px;    
+}
+
 .supension-row{
     border-radius: 10px;
     height: 40px;    
 }
 
+.supension-row:hover{
+    cursor: pointer;
+    -webkit-box-shadow:  0 0 11px rgba(33,33,33,.2);
+    -moz-box-shadow:  0 0 11px rgba(33,33,33,.2);
+    box-shadow:  0 0 11px rgba(33,33,33,.2);
+}

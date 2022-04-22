@@ -44,11 +44,11 @@
 <div class="row justify-content-center mb-4" *ngIf="myForm.valid">
     <div class="col-10">
         <div class="row">
-            <div class="t3 mb-4">
+            <div class="t3 mb-2">
                 Cantidad de resultados: {{suspensiones.length}}
             </div>
         </div>
-        <div class="row align-items-center supension-row bg-white">
+        <div class="row align-items-center supension-header my-2 bg-white">
             <div class="col-6">
                 <div class="s2">Descripción</div>
             </div>
@@ -59,7 +59,7 @@
                 <div class="s2">Fin</div>
             </div>
         </div>
-        <div class="row align-items-center supension-row" *ngFor="let suspension of suspensiones; let i = index;" [ngClass]="((i%2)==0)?'':'bg-white'">
+        <div class="row align-items-center supension-row my-2" *ngFor="let suspension of suspensiones; let i = index;" [ngClass]="((i%2)==0)?'':'bg-white'" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal'+i">
             <div class="col-6">
                 <div class="c1">{{suspension.description}}</div>
             </div>
@@ -69,6 +69,9 @@
             <div class="col-3">
                 <div class="c1">{{suspension.fechaFin | date: 'dd/MM/yy' }}</div>
             </div>
+        </div>
+        <div *ngFor="let suspension of suspensiones; let i = index;">
+            <app-detalles-suspension [id]="i.toString()" [suspension]="suspension"></app-detalles-suspension>
         </div>
     </div>
 </div>
