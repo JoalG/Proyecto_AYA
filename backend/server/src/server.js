@@ -19,11 +19,14 @@ const billRoute = require('./routes/bills');
 const usersRoute = require('./routes/users');
 const ReporteAveriaRoute = require('./routes/reporteAveria');
 const suspensionRoute = require('./routes/suspensions');
+const paymentRoute = require('./routes/payments');
+
 
 app.use('/bills', billRoute);
 app.use('/users', usersRoute);
 app.use('/reportesAverias', ReporteAveriaRoute);
 app.use('/suspensions', suspensionRoute);
+app.use('/payments', paymentRoute);
 
 mongoose.connect(
     process.env.DB_CONNECTION, {
