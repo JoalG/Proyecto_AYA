@@ -16,6 +16,7 @@ import { EditReporteAveriaComponent } from './components/edit-reporte-averia/edi
 import { UserTramitesSolicitudesComponent } from './components/users/user-tramites-solicitudes/user-tramites-solicitudes.component';
 import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
+import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
 
 const routes: Routes = [
   
@@ -67,6 +68,11 @@ const routes: Routes = [
   {
     path: 'create-suspension',
     component: CreateSuspensionComponent,
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'edit-suspension/:_id',
+    component: EditSuspensionComponent,
     canActivate: [AuthenticationGuard]
   },
   {path:'**',pathMatch:'full',redirectTo:'consultar-facturacion'}

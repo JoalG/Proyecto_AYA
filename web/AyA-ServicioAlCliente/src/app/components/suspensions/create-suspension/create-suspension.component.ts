@@ -1997,8 +1997,8 @@ export class CreateSuspensionComponent implements OnInit {
         let suspension: Suspension = {
           provincia: this.myForm.value.provincia,
           canton: this.myForm.value.canton,
-          fechaInit: this.myForm.value.fechaInit,
-          fechaFin: this.myForm.value.fechaFin,
+          fechaInit: new Date(this.myForm.value.fechaInit + ' 00:00'),
+          fechaFin: new Date(this.myForm.value.fechaFin + ' 00:00'),
           description: this.myForm.value.description
         }
   
