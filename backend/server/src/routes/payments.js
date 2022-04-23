@@ -28,15 +28,20 @@ router.get('/', async(req, res) => {
 //GET payments
 //E: Nis, clientIdType, clientId
 //S: payments
-router.get('/:_nis/:_clientIdType/:_clientId', async(req, res) => {
+router.get('/:_nis&:_clientIdType&:_clientId', async(req, res) => {
     try {
-        const payments = await Payment.find({ 
+        const payment = await Payment.findOne({ 
             nis: req.params._nis,
             clientIdType: req.params._clientIdType,
             clientId: req.params._clientId,
         });
 
-        if(payments != null){
+        if(payment != null){
+            const payments = await Payment.find({ 
+                nis: req.params._nis,
+                clientIdType: req.params._clientIdType,
+                clientId: req.params._clientId,
+            });
             res.status(200).json({
                 success: true,
                 message: 'Success',
