@@ -31,6 +31,8 @@ import { UserTramitesSolicitudesComponent } from './components/users/user-tramit
 import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
 import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
+import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-pagos.component';
+import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { EditSuspensionComponent } from './components/suspensions/edit-suspensio
     UserTramitesSolicitudesComponent,
     ListSuspensionsComponent,
     CreateSuspensionComponent,
-    EditSuspensionComponent
+    EditSuspensionComponent,
+    ConsultarPagosComponent,
+    HistorialPagosComponent
   ],
   imports: [
     BrowserModule,
