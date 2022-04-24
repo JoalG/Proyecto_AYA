@@ -17,6 +17,8 @@ import { UserTramitesSolicitudesComponent } from './components/users/user-tramit
 import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
 import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
+import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-pagos.component';
+import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
 
 const routes: Routes = [
   
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path:'detalles-facturacion', component:DetallesFacturacionComponent},
   {path:'reporte-averias', component:ReporteAveriasComponent},
   {path:'reportar-averia/:type', component:FormReporteAveriaComponent},
+  {path:'consultar-pagos', component:ConsultarPagosComponent},
+  {path:'historial-pagos', component:HistorialPagosComponent},
   {
     path:'create-user', 
     component:CreateUserComponent,

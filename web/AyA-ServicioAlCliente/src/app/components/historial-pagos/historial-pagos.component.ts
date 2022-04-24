@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'app-historial-pagos',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistorialPagosComponent implements OnInit {
 
-  constructor() { }
+  payments: any;
+
+  constructor(
+    private readonly _paymentService: PaymentService
+  ) { }
 
   ngOnInit(): void {
+    this.payments = this._paymentService.get_sharingPayments();
   }
 
 }
