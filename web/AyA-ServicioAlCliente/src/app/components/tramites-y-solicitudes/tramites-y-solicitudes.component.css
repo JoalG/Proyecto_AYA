@@ -1,0 +1,72 @@
+.t2{
+    color: #026BBF;
+}
+
+.s2{
+    color: white;
+}
+
+.c2{
+    color: white;
+}
+
+.option-card{
+    height: 170px;
+    width: 160px;
+}
+
+.title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 2;
+    bottom: 5%;    
+}
+
+.text-hover{
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 2;
+    top: 30%;
+}
+
+.slideshow-wrapper {
+    position:relative;
+    float: left;
+}
+
+.slideshow-wrapper:hover {
+    -webkit-box-shadow:  0 0 11px rgba(33,33,33,.2);
+    -moz-box-shadow:  0 0 11px rgba(33,33,33,.2);
+    box-shadow:  0 0 11px rgba(33,33,33,.2);
+    cursor: pointer;
+}
+
+.slideshow-wrapper:before {
+    content: '';
+    position:absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 25%,rgba(0,0,0,1) 125%);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.slideshow-wrapper:hover img{
+    filter: brightness(75%);
+}
+
+.slideshow-wrapper:hover .title {
+    display: none;
+}
+
+.slideshow-wrapper:hover .text-hover {
+    display: inline;
+}
+

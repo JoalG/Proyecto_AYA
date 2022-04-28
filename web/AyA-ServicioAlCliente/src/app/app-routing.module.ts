@@ -18,6 +18,7 @@ import { TramitesProyectosComponent } from './components/tramites-proyectos/tram
 import { SuspensionesDelServicioComponent } from './components/suspensiones-del-servicio/suspensiones-del-servicio.component';
 import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
+import { TramitesYSolicitudesComponent } from './components/tramites-y-solicitudes/tramites-y-solicitudes.component';
 
 const routes: Routes = [
   
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:'reportar-averia/:type', component:FormReporteAveriaComponent},
   {path:'tramites-proyectos', component:TramitesProyectosComponent},
   {path:'suspensiones-del-servicio', component:SuspensionesDelServicioComponent},
+  {path:'tramites-y-solicitudes', component:TramitesYSolicitudesComponent},
   {
     path:'create-user', 
     component:CreateUserComponent,
