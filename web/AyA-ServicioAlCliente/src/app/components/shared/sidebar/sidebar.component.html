@@ -34,10 +34,10 @@
             -->
           
             <hr>
-            <div class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Trámites y solicitudes</div>
+            <div [routerLink]="['/tramites-y-solicitudes']" class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Trámites y solicitudes</div>
           
             <hr>
-            <div [routerLink]="['/']" class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Sucursal más cercana</div>
+            <div class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Sucursal más cercana</div>
 
             <!-- 
             <div class="list-group">
@@ -46,7 +46,7 @@
             </div>
             -->
             <hr>
-            <div [routerLink]="['/']" class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Próximas supensiones de servicio</div>
+            <div [routerLink]="['/suspensiones-del-servicio']" class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Próximas supensiones de servicio</div>
             
             <hr>
             <div class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close" (click)="goToUsers()">Funcionarios</div>
