@@ -10,10 +10,7 @@
     color: white;
 }
 
-.option-card{
-    height: 170px;
-    width: 160px;
-}
+
 
 .title {
     position: absolute;
@@ -21,7 +18,8 @@
     right: 0;
     text-align: center;
     z-index: 2;
-    bottom: 5%;    
+    bottom: 5%;
+    min-height: 40px;    
 }
 
 .text-hover{
@@ -36,7 +34,16 @@
 
 .slideshow-wrapper {
     position:relative;
-    float: left;
+}
+
+.option-card{
+    height: 170px;
+    width: 230px;
+}
+
+.card-img{
+    height: 170px;
+    width: 230px;
 }
 
 .slideshow-wrapper:hover {
