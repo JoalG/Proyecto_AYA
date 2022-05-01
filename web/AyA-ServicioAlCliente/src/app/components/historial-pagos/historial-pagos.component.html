@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="px-5 py-3 t2 text-center">
+        Suspensiones de servicio
+    </div>
+</div>
+
+<div class="custom-table px-3 ms-3 ms-sm-0  mt-3">
+
+    <div class="row px-3 py-1 my-3  user-li align-items-center" *ngFor="let payment of payments">
+        <div class="col-3">
+            <div class="c1">{{payment.pagoDate | date:'d/MM/yyyy'}}</div>
+        </div>
+        <div class="col-2">
+            <div class="c1">Facturación</div>
+            <div class="c1">Agencia</div>
+            <div class="c1">Recaudador</div>
+        </div>
+        <div class="col-2">
+            <div class="c1">{{payment.facturacionDate | date:'d/MM/yyyy'}}</div>
+            <div class="c1">{{payment.agencia}}</div>
+            <div class="c1">{{payment.recaudador}}</div>
+        </div>
+        <div class="col-2">
+            <div class="c1">{{payment.total}}</div>
+        </div>
+    </div>
+</div>
+
+
+
+

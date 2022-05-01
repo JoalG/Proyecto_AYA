@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const BillSchema = mongoose.Schema({
+const PaymentSchema = mongoose.Schema({
     nis:{
         type: String,
         required: true
@@ -13,45 +13,26 @@ const BillSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    date: {
+    facturacionDate: {
         type: Date,
-        required: true,
-        default: Date.now
-    },
-    billingNumber: {
-        type: String,
         required: true
     },
-    consumption: {
-        type: Number,
-        required: true
-    },
-    expirationDate: {
+    pagoDate: {
         type: Date,
-        required: true,
-        default: Date.now    
+        required: true
     },
-    documentType: {
+    recaudador: {
         type: String,
-        required: true
-    },
-    state: {
-        type: String,
-        required: true
-        //Puesto al cobro o Cancelado
-    },
-    amount: {
-        type: String ,
-        required: true
-    },
-    others: {
-        type: String ,
         required: true
     },
     total: {
-        type: String ,
+        type: String,
+        required: true
+    },
+    agencia: {
+        type: String,
         required: true
     }
 });
 
-module.exports = mongoose.model('Bill', BillSchema);
+module.exports = mongoose.model('Payment', PaymentSchema);

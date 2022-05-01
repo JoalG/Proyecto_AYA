@@ -23,6 +23,26 @@ router.get('/', async(req, res) => {
 
 });
 
+//GET 
+//S: una suspension por _id
+router.get('/:_id', async(req, res) => {
+    try {
+        const suspension = await Suspension.findOne({_id: req.params._id});
+        res.json({
+            success: true,
+            message: 'Success',
+            data: suspension
+        });
+    } catch ({ message }) {
+        res.status(200).json({
+            success: false,
+            message,
+            data: {}
+        });
+    }
+
+});
+
 
 //GET de suspensiones segun provincia y canton
 //E: provincia y canton

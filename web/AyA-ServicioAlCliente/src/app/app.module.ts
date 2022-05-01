@@ -30,6 +30,9 @@ import {
 import { UserTramitesSolicitudesComponent } from './components/users/user-tramites-solicitudes/user-tramites-solicitudes.component';
 import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
+import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
+import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-pagos.component';
+import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { CreateSuspensionComponent } from './components/suspensions/create-suspe
     EditReporteAveriaComponent,
     UserTramitesSolicitudesComponent,
     ListSuspensionsComponent,
-    CreateSuspensionComponent
+    CreateSuspensionComponent,
+    EditSuspensionComponent,
+    ConsultarPagosComponent,
+    HistorialPagosComponent
   ],
   imports: [
     BrowserModule,
