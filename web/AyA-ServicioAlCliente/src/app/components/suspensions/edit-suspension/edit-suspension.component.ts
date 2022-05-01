@@ -6,11 +6,11 @@ import { Suspension } from 'src/app/models/suspension';
 import { SuspensionService } from 'src/app/services/suspension.service'
 
 @Component({
-  selector: 'app-create-suspension',
-  templateUrl: './create-suspension.component.html',
-  styleUrls: ['./create-suspension.component.css']
+  selector: 'app-edit-suspension',
+  templateUrl: './edit-suspension.component.html',
+  styleUrls: ['./edit-suspension.component.css']
 })
-export class CreateSuspensionComponent implements OnInit {
+export class EditSuspensionComponent implements OnInit {
 
   politicalDivisionCR = {
     "title": "Costa Rica",
@@ -1924,8 +1924,9 @@ export class CreateSuspensionComponent implements OnInit {
     fechaInit: ['', [Validators.required]],
     fechaFin: ['', [Validators.required]],
     description: ['', [Validators.required, Validators.maxLength(100)]]
-  
   })
+
+  _id!: string|null
 
   constructor(
     private fb: FormBuilder,
@@ -1936,8 +1937,41 @@ export class CreateSuspensionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+    this._id = this.route.snapshot.paramMap.get('_id');
+    this.setSuspensionInfo();
   }
+
+  async setSuspensionInfo(){
+    let res = (await this._suspensionService.getSuspension(this._id!).toPromise());
+    if(res?.success){
+      this.fillForm(res?.data);
+    }
+    else{
+      console.log(res?.message);
+    }
+  }
+
+  fillForm(suspension: Suspension){
+    this.myForm.get('provincia')?.setValue(suspension.provincia);
+    this.myForm.get('canton')?.setValue(suspension.canton);
+    this.myForm.get('fechaInit')?.setValue(this.formatDate(suspension.fechaInit));
+    this.myForm.get('fechaFin')?.setValue(this.formatDate(suspension.fechaFin));
+    this.myForm.get('description')?.setValue(suspension.description);
+  }
+
+  formatDate(date: Date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
   isNumberKey(evt:KeyboardEvent) {
     var charCode = (evt.which) ? evt.which : evt.keyCode
@@ -1957,6 +1991,24 @@ export class CreateSuspensionComponent implements OnInit {
     return this.politicalDivisionCR.provincias.find(item => {
       return item.title == province;
     })?.cantones;
+  }
+
+  getCantonsSelectedTop(){
+    let cantons = this.getCantons();
+    let newCantons: String[] = [];
+    
+    if (cantons != null){
+      cantons!.forEach(canton => {
+        newCantons.push(canton.title)
+      });
+
+      let currentCanton = this.myForm.get('canton')?.value;
+      if(newCantons.includes(currentCanton)){
+        newCantons.splice(newCantons.indexOf(currentCanton), 1);
+        newCantons.unshift(currentCanton);
+      }
+    }
+    return newCantons;
   }
 
   getDistricts(){
@@ -1990,11 +2042,12 @@ export class CreateSuspensionComponent implements OnInit {
     return invalid;
   }
 
-  async createSuspension(){
+  async updateSuspension(){
 
     if (this.myForm.valid){
       if (this.isFechaInitFinValid()){
         let suspension: Suspension = {
+          _id: this._id!,
           provincia: this.myForm.value.provincia,
           canton: this.myForm.value.canton,
           fechaInit: new Date(this.myForm.value.fechaInit + ' 00:00'),
@@ -2002,13 +2055,13 @@ export class CreateSuspensionComponent implements OnInit {
           description: this.myForm.value.description
         }
   
-        let res = (await this._suspensionService.createSuspension(suspension).toPromise());
+        let res = (await this._suspensionService.updateSuspension(suspension).toPromise());
         if(res?.success){
           this.router.navigate(['/list-suspensions']);
-          this.toastr.success('Suspensión generada con éxita');
+          this.toastr.success('Suspensión actualizada con éxita');
         }
         else{
-          this.toastr.error('Suspensión no pudo ser generada')
+          this.toastr.error('Suspensión no pudo ser actualizada')
         }
       }
       else{
@@ -2035,5 +2088,4 @@ export class CreateSuspensionComponent implements OnInit {
   isFechaInitFinValid():boolean{
     return this.myForm.get('fechaInit')?.value <= this.myForm.get('fechaFin')?.value;
   }
-
 }

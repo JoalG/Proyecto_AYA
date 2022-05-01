@@ -34,6 +34,9 @@ import { ListSuspensionsComponent } from './components/suspensions/list-suspensi
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
 import { DetallesSuspensionComponent } from './components/detalles-suspension/detalles-suspension.component';
 import { TramitesYSolicitudesComponent } from './components/tramites-y-solicitudes/tramites-y-solicitudes.component';
+import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
+import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-pagos.component';
+import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,10 @@ import { TramitesYSolicitudesComponent } from './components/tramites-y-solicitud
     EditReporteAveriaComponent,
     UserTramitesSolicitudesComponent,
     ListSuspensionsComponent,
+    CreateSuspensionComponent,
+    EditSuspensionComponent,
+    ConsultarPagosComponent,
+    HistorialPagosComponent,
     CreateSuspensionComponent,
     UserTramitesSolicitudesComponent,
     TramitesProyectosComponent,

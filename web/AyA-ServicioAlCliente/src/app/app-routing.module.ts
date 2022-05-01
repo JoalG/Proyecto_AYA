@@ -19,6 +19,9 @@ import { SuspensionesDelServicioComponent } from './components/suspensiones-del-
 import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
 import { TramitesYSolicitudesComponent } from './components/tramites-y-solicitudes/tramites-y-solicitudes.component';
+import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
+import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-pagos.component';
+import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
 
 const routes: Routes = [
   
@@ -29,6 +32,8 @@ const routes: Routes = [
   {path:'tramites-proyectos', component:TramitesProyectosComponent},
   {path:'suspensiones-del-servicio', component:SuspensionesDelServicioComponent},
   {path:'tramites-y-solicitudes', component:TramitesYSolicitudesComponent},
+  {path:'consultar-pagos', component:ConsultarPagosComponent},
+  {path:'historial-pagos', component:HistorialPagosComponent},
   {
     path:'create-user', 
     component:CreateUserComponent,
@@ -73,6 +78,11 @@ const routes: Routes = [
   {
     path: 'create-suspension',
     component: CreateSuspensionComponent,
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'edit-suspension/:_id',
+    component: EditSuspensionComponent,
     canActivate: [AuthenticationGuard]
   },
   {path:'**',pathMatch:'full',redirectTo:'consultar-facturacion'}

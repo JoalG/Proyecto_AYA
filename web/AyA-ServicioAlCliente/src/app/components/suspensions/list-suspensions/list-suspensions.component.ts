@@ -34,7 +34,7 @@ export class ListSuspensionsComponent implements OnInit {
     }
   
     goToEditSuspension(_id: string){
-      //this.router.navigate(['/edit-user', _id]);
+      this.router.navigate(['/edit-suspension', _id]);
     }
   
     goToCreateSuspension(){
