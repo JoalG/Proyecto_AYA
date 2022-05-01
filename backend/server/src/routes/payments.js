@@ -41,7 +41,7 @@ router.get('/:_nis&:_clientIdType&:_clientId', async(req, res) => {
                 nis: req.params._nis,
                 clientIdType: req.params._clientIdType,
                 clientId: req.params._clientId,
-            });
+            }).sort({pagoDate: -1});
             res.status(200).json({
                 success: true,
                 message: 'Success',
