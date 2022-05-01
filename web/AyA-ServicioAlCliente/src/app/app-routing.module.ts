@@ -26,14 +26,14 @@ import { HistorialPagosComponent } from './components/historial-pagos/historial-
 const routes: Routes = [
   
   {path:'consultar-facturacion', component:ConsultarFacturacionComponent},
-  {path:'detalles-facturacion', component:DetallesFacturacionComponent},
+  {path:'detalles-facturacion/:nis/:clientIdType/:clientId', component:DetallesFacturacionComponent},
   {path:'reporte-averias', component:ReporteAveriasComponent},
   {path:'reportar-averia/:type', component:FormReporteAveriaComponent},
   {path:'tramites-proyectos', component:TramitesProyectosComponent},
   {path:'suspensiones-del-servicio', component:SuspensionesDelServicioComponent},
   {path:'tramites-y-solicitudes', component:TramitesYSolicitudesComponent},
   {path:'consultar-pagos', component:ConsultarPagosComponent},
-  {path:'historial-pagos', component:HistorialPagosComponent},
+  {path:'historial-pagos/:nis/:clientIdType/:clientId', component:HistorialPagosComponent},
   {
     path:'create-user', 
     component:CreateUserComponent,
