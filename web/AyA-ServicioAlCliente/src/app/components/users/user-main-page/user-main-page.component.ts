@@ -30,7 +30,7 @@ export class UserMainPageComponent implements OnInit {
   }
 
   goToSuspensiones(){
-    this.router.navigate(['/create-suspension']); 
+    this.router.navigate(['/list-suspensions']); 
   }
 
   setUserType(){

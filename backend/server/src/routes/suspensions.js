@@ -7,7 +7,7 @@ module.exports = router;
 //S: Todas las suspensiones
 router.get('/', async(req, res) => {
     try {
-        const suspensions = await Suspension.find({deleted: false});
+        const suspensions = await Suspension.find({deleted: false}).sort({fechaInit: -1});
         res.json({
             success: true,
             message: 'Success',
@@ -27,7 +27,7 @@ router.get('/', async(req, res) => {
 //S: una suspension por _id
 router.get('/:_id', async(req, res) => {
     try {
-        const suspension = await Suspension.findOne({_id: req.params._id});
+        const suspension = await Suspension.findOne({_id: req.params._id, fechaFin: {$gte: new Date()}});
         res.json({
             success: true,
             message: 'Success',
