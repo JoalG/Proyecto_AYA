@@ -28,8 +28,12 @@ import {
   ToastNotificationConfigModule,
 } from '@costlydeveloper/ngx-awesome-popup';
 import { UserTramitesSolicitudesComponent } from './components/users/user-tramites-solicitudes/user-tramites-solicitudes.component';
+import { TramitesProyectosComponent } from './components/tramites-proyectos/tramites-proyectos.component';
+import { SuspensionesDelServicioComponent } from './components/suspensiones-del-servicio/suspensiones-del-servicio.component';
 import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
+import { DetallesSuspensionComponent } from './components/detalles-suspension/detalles-suspension.component';
+import { TramitesYSolicitudesComponent } from './components/tramites-y-solicitudes/tramites-y-solicitudes.component';
 import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
 import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-pagos.component';
 import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
@@ -55,7 +59,13 @@ import { HistorialPagosComponent } from './components/historial-pagos/historial-
     CreateSuspensionComponent,
     EditSuspensionComponent,
     ConsultarPagosComponent,
-    HistorialPagosComponent
+    HistorialPagosComponent,
+    CreateSuspensionComponent,
+    UserTramitesSolicitudesComponent,
+    TramitesProyectosComponent,
+    SuspensionesDelServicioComponent,
+    DetallesSuspensionComponent,
+    TramitesYSolicitudesComponent
   ],
   imports: [
     BrowserModule,
