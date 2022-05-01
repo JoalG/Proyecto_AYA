@@ -44,8 +44,7 @@ export class ConsultarFacturacionComponent implements OnInit {
     let bill = (await this._billService.getCollectionBill(nis, clientIdType, clientId).toPromise());
     console.log(bill)
     if(bill!.success==true){
-      this._billService.set_sharingBill(bill?.data);
-      this.router.navigate(['/detalles-facturacion'])
+      this.router.navigate(['/detalles-facturacion', nis, clientIdType, clientId]);
     }
     else{
       this.toastr.info("El cliente no tiene facturación al cobro", `NIS ${nis}`)
