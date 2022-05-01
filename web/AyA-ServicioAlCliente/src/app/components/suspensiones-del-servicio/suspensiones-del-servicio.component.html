@@ -1,0 +1,77 @@
+<div class="row mb-4">
+    <div class="px-5 py-3 t2 text-center">
+        Próximas suspensiones del servicio
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-6 ">
+        <div class="row d-flex justify-content-center">
+            <form [formGroup]="myForm">
+                <div class="form-row">
+                    <div class="c1 my-3">Seleccione una provincia:</div>
+                    <div *ngFor="let province of getProvinces(); let i = index;" class="d-inline">  
+                        <input type="radio" class="btn-check" [value]="province.title" formControlName="provincia" [id]="province.title" (change)="changeProvince()"> 
+                        <label class="btn btn-radio mx-3 my-2" [for]="province.title"> 
+                            <div class="sb">{{province.title}}</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Seleccione el cantón
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <select class="form-select c1" [ngClass]="validField('canton')" id="exampleFormControlSelect1" (change)="changeCanton()" [attr.disabled]="(myForm.get('provincia')?.invalid)? true: null" formControlName="canton">
+                                <option value="" selected disabled hidden></option>    
+                                <option *ngFor="let province of getCantons()">{{province.title}}</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Debe seleccionar el cantón
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+             </form>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mb-4" *ngIf="myForm.valid">
+    <div class="col-10">
+        <div class="row">
+            <div class="t3 mb-2">
+                Cantidad de resultados: {{suspensiones.length}}
+            </div>
+        </div>
+        <div class="row align-items-center supension-header my-2 bg-white">
+            <div class="col-6">
+                <div class="s2">Descripción</div>
+            </div>
+            <div class="col-3">
+                <div class="s2">Inicio</div>
+            </div>
+            <div class="col-3">
+                <div class="s2">Fin</div>
+            </div>
+        </div>
+        <div class="row align-items-center supension-row my-2" *ngFor="let suspension of suspensiones; let i = index;" [ngClass]="((i%2)==0)?'':'bg-white'" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal'+i">
+            <div class="col-6">
+                <div class="c1">{{suspension.description}}</div>
+            </div>
+            <div class="col-3">
+                <div class="c1">{{suspension.fechaInit | date: 'dd/MM/yy' }}</div>
+            </div>
+            <div class="col-3">
+                <div class="c1">{{suspension.fechaFin | date: 'dd/MM/yy' }}</div>
+            </div>
+        </div>
+        <div *ngFor="let suspension of suspensiones; let i = index;">
+            <app-detalles-suspension [id]="i.toString()" [suspension]="suspension"></app-detalles-suspension>
+        </div>
+    </div>
+</div>

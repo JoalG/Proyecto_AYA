@@ -29,6 +29,10 @@ export class UserMainPageComponent implements OnInit {
     this.router.navigate(['/user-tramites-solicitudes']);
   }
 
+  goToSuspensiones(){
+    this.router.navigate(['/create-suspension']); 
+  }
+
   setUserType(){
     this.userType = this._userService.getUserType();
   }

@@ -14,8 +14,11 @@ import { ReporteAveriasComponent } from './components/reporte-averias/reporte-av
 import { ListReporteAveriaComponent } from './components/list-reporte-averia/list-reporte-averia.component';
 import { EditReporteAveriaComponent } from './components/edit-reporte-averia/edit-reporte-averia.component';
 import { UserTramitesSolicitudesComponent } from './components/users/user-tramites-solicitudes/user-tramites-solicitudes.component';
+import { TramitesProyectosComponent } from './components/tramites-proyectos/tramites-proyectos.component';
+import { SuspensionesDelServicioComponent } from './components/suspensiones-del-servicio/suspensiones-del-servicio.component';
 import { ListSuspensionsComponent } from './components/suspensions/list-suspensions/list-suspensions.component';
 import { CreateSuspensionComponent } from './components/suspensions/create-suspension/create-suspension.component';
+import { TramitesYSolicitudesComponent } from './components/tramites-y-solicitudes/tramites-y-solicitudes.component';
 import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
 import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-pagos.component';
 import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
@@ -26,6 +29,9 @@ const routes: Routes = [
   {path:'detalles-facturacion/:nis/:clientIdType/:clientId', component:DetallesFacturacionComponent},
   {path:'reporte-averias', component:ReporteAveriasComponent},
   {path:'reportar-averia/:type', component:FormReporteAveriaComponent},
+  {path:'tramites-proyectos', component:TramitesProyectosComponent},
+  {path:'suspensiones-del-servicio', component:SuspensionesDelServicioComponent},
+  {path:'tramites-y-solicitudes', component:TramitesYSolicitudesComponent},
   {path:'consultar-pagos', component:ConsultarPagosComponent},
   {path:'historial-pagos/:nis/:clientIdType/:clientId', component:HistorialPagosComponent},
   {
