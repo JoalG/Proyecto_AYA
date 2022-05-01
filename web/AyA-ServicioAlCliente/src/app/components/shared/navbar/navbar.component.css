@@ -2,9 +2,7 @@
     color: #0284EB;
 }
 
-.t2:hover{
-    color: #026BBF;
-}
+
 
 .container-fluid {
     padding-left: 0;
@@ -19,9 +17,27 @@
     max-width: 100%;
 }
 
-.logout{
+.login-info{
     position: absolute;
     right: 1%;
+    top: 10%;
+}
+
+.logout:hover{
+    color: #026BBF;
+}
+
+.user{
+    position: absolute;
+    right: 10px;
+}
+
+
+
+@media only screen and (max-width:768px){
+    .logo{
+        margin-top: 50px;
+    }
 }
 
 @media only screen and (min-width:768px){
@@ -30,10 +46,15 @@
         left: 170px;
         top: 45px;
     }
+}
+
+@media only screen and (min-width:900px){
     .bg{
         position: absolute;
         display: block;
 
     }
 }
+
+
 
