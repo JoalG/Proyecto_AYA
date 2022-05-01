@@ -32,11 +32,11 @@ export class DetallesFacturacionComponent implements OnInit {
 
   async setBillInfo(){
     let bill = (await this._billService.getCollectionBill(this.nis!, this.clientIdType!, this.clientId!).toPromise());
-    console.log(bill)
     if(bill!.success==true){
       this.bill = bill?.data;
     }
     else{
+      this.router.navigate(['/consultar-facturacion']);
       this.toastr.info("El cliente no tiene facturación al cobro", `NIS ${this.nis}`);
     }
   }

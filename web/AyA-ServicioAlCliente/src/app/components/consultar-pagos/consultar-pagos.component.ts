@@ -35,18 +35,17 @@ export class ConsultarPagosComponent implements OnInit {
     
   }
 
-  async getCollectionBill(){
+  async getCollectionPayments(){
     let nis = this.myForm.get('nis')?.value;
     let clientIdType = this.myForm.get('clientIdType')?.value;
     let clientId = this.myForm.get('clientId')?.value;
     
     let res = (await this._paymentService.getPayments(nis, clientIdType, clientId).toPromise());
       if(res?.success){
-        this._paymentService.set_sharingPayments(res?.data);
-        this.router.navigate(['/historial-pagos']);
+        this.router.navigate(['/historial-pagos', nis, clientIdType, clientId]);
       }
       else{
-        console.log(res?.message);
+        this.toastr.info("El cliente no tiene pagos realizados", `NIS ${nis}`)
       }
   }
 
