@@ -9,7 +9,7 @@ const ReporteAveria = require('../models/ReporteAveria');
 //S: Todas los reportes de averia
 router.get('/', async(req, res) => {
     try {
-        const reports = await ReporteAveria.find();
+        const reports = await ReporteAveria.find().sort({creationDate: -1});
         res.json({
             success: true,
             message: 'Success',
@@ -26,7 +26,7 @@ router.get('/', async(req, res) => {
 });
 
 
-//GET de un user en especifico
+//GET de un reporte en especifico
 //E: _id 
 //S: single report
 router.get('/:_id', async(req, res) => {
