@@ -10,7 +10,7 @@ const crypto = require('crypto');
 //S: Todos los users 
 router.get('/', async(req, res) => {
     try {
-        const users = await User.find();
+        const users = await User.find({deleted: false});
         res.json({
             success: true,
             message: 'Success',
@@ -33,7 +33,7 @@ router.get('/', async(req, res) => {
 //S: User sin password
 router.get('/:cedula', async(req, res) => {
     try {
-        const user = await User.findOne({ cedula: req.params.cedula });
+        const user = await User.findOne({ cedula: req.params.cedula, deleted: false });
         res.json({
             success: true,
             message: 'Success',
@@ -87,7 +87,7 @@ router.delete('/:cedula', async(req, res) => {
 router.post('/', async(req, res) => {
 
     try {
-        const findUser = await User.findOne({ cedula: req.body.cedula });
+        const findUser = await User.findOne({ cedula: req.body.cedula, deleted: false});
         if (findUser == null) {
 
             let salt = crypto.randomBytes(16).toString('hex');
@@ -100,11 +100,9 @@ router.post('/', async(req, res) => {
                 hash: hash,
                 email: req.body.email,
                 cedula: req.body.cedula,
-                userType: req.body.userType
-
+                userType: req.body.userType,
+                deleted: false
             });
-
-            console.log(user);
 
             await user.save(function(err) {
                 if (err) {
@@ -148,11 +146,11 @@ router.patch('/', async(req, res) => {
 
     try {
 
-        const findUser = await User.findOne({ cedula: req.body.originalCedula });
+        const findUser = await User.findOne({ cedula: req.body.originalCedula, deleted: false });
         if (findUser != null) {
 
             if(req.body.originalCedula != req.body.user.cedula){
-                const findOtherUser = await User.findOne({ cedula: req.body.user.cedula });
+                const findOtherUser = await User.findOne({ cedula: req.body.user.cedula, deleted: false });
                 if(findOtherUser != null){
                     return res.status(200).json({
                         success: false,
@@ -192,8 +190,60 @@ router.patch('/', async(req, res) => {
             data: {}
         });
     }
+});
+
+router.patch('/delete', async(req, res) => {
+
+    try {
+
+        const findUser = await User.findOne({ cedula: req.body.cedula });
+        if (findUser != null) {
+
+            const updatedUser = await User.updateOne({_id: findUser._id}, {$set: {
+                deleted: true
+            }})
+            res.status(200).json({
+                success: true,
+                message: "Usuario eliminado",
+                data: {}
+            })
+            
+
+        } else {
+            res.status(200).json({
+            success: false,
+            message: "Usuario No existe",
+            data: {}
+        });
+        }
+    } catch ({ message }) {
+        res.status(200).json({
+            success: false,
+            message,
+            data: {}
+        });
+    }
 
 
+});
+
+router.patch('/newAt', async(req, res) => {
+    try {
+
+        const updatedUser = await User.updateMany({}, {$set: {deleted: false}})
+        res.status(200).json({
+            success: true,
+            message: "Usuarios cambiadosq",
+            data: updatedUser
+        })
+
+    } catch ({ message }) {
+        res.status(200).json({
+            success: false,
+            message,
+            data: {}
+        });
+    }
 });
 
 router.post('/login', async (req, res) => {
