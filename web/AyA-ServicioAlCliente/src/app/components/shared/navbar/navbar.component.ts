@@ -15,6 +15,8 @@ export class NavbarComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router
   ) { }
+  
+  username: string = '';
 
   ngOnInit(): void {
   }
@@ -27,5 +29,9 @@ export class NavbarComponent implements OnInit {
 
   isLoggedIn(){
     return this._userService.loggedIn();
+  }
+
+  getUsername(){
+    return this._userService.getUsername();
   }
 }

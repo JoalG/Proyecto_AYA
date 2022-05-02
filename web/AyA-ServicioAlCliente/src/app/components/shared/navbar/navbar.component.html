@@ -7,7 +7,7 @@
         </a>
 
         <div class="login-info ">
-            <div class="t2 btn" *ngIf="isLoggedIn()"><i class="fa-solid fa-circle-user"></i> Jose Gamboa </div>
+            <div class="t2 btn" *ngIf="isLoggedIn()"><i class="fa-solid fa-circle-user"></i> {{getUsername()}} </div>
             <div class="t2 btn logout" *ngIf="isLoggedIn()"><i class="fa-solid fa-right-from-bracket" (click)="logOut()"></i></div>
         </div>
        
