@@ -8,7 +8,7 @@
 
     <div class="row px-3 py-1 my-3  user-li align-items-center" *ngFor="let payment of payments">
         <div class="col-4">
-            <div class="c1">{{payment.pagoDate | date:'d/MM/yyyy'}}</div>
+            <div class="t2">{{payment.pagoDate | date:'d/MM/yyyy'}}</div>
         </div>
         <div class="col-3">
             <div class="c1">Facturación</div>
@@ -21,7 +21,7 @@
             <div class="c1">{{payment.recaudador}}</div>
         </div>
         <div class="col-2">
-            <div class="c1">{{payment.total}}</div>
+            <div class="t2">{{payment.total | currency:'₡'}}</div>
         </div>
     </div>
 </div>
