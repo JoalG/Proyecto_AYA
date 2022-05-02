@@ -12,6 +12,7 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 export class UserService {
 
   URL_API = 'http://localhost:3000/users';
+  private username: string = '';
 
   constructor(private http:HttpClient, private router: Router) { }
   
@@ -59,5 +60,14 @@ export class UserService {
       return decoded.userType;
     }
     return null
+  }
+
+  setUsername(){
+    let tokenInfo: any = jwtDecode(this.getToken()!);
+    this.username = tokenInfo.name + ' ' + tokenInfo.lastname;
+  }
+
+  getUsername(){
+    return this.username;
   }
 }
