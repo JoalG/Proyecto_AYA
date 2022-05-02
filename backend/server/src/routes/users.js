@@ -145,7 +145,6 @@ router.post('/', async(req, res) => {
 router.patch('/', async(req, res) => {
 
     try {
-
         const findUser = await User.findOne({ cedula: req.body.originalCedula, deleted: false });
         if (findUser != null) {
 
@@ -158,23 +157,41 @@ router.patch('/', async(req, res) => {
                         data: {}
                     })
                 }
-            
             }
-            const updatedUser = await User.updateOne({_id: findUser._id}, {$set: {
-                name: req.body.user.name,
-                lastname: req.body.user.lastname,
-                email: req.body.user.email,
-                cedula: req.body.user.cedula,
-                userType: req.body.user.userType
+            if(req.body.password != null){
 
-            }})
-            res.status(200).json({
-                success: true,
-                message: "Usuario actualizado",
-                data: {}
-            })
-            
+                let salt = crypto.randomBytes(16).toString('hex');
+                let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, 'sha512').toString('hex');
 
+                const updatedUser = await User.updateOne({_id: findUser._id}, {$set: {
+                    name: req.body.user.name,
+                    lastname: req.body.user.lastname,
+                    email: req.body.user.email,
+                    cedula: req.body.user.cedula,
+                    userType: req.body.user.userType,
+                    salt: salt,
+                    hash: hash
+                }})
+                res.status(200).json({
+                    success: true,
+                    message: "Usuario actualizado",
+                    data: {}
+                })
+            }
+            else{
+                const updatedUser = await User.updateOne({_id: findUser._id}, {$set: {
+                    name: req.body.user.name,
+                    lastname: req.body.user.lastname,
+                    email: req.body.user.email,
+                    cedula: req.body.user.cedula,
+                    userType: req.body.user.userType
+                }})
+                res.status(200).json({
+                    success: true,
+                    message: "Usuario actualizado",
+                    data: {}
+                })
+            }
         } else {
             res.status(200).json({
             success: false,
