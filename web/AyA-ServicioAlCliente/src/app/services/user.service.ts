@@ -62,12 +62,11 @@ export class UserService {
     return null
   }
 
-  setUsername(){
-    let tokenInfo: any = jwtDecode(this.getToken()!);
-    this.username = tokenInfo.name + ' ' + tokenInfo.lastname;
-  }
-
   getUsername(){
+    if(this.username==''){
+      let tokenInfo: any = jwtDecode(this.getToken()!);
+      this.username = tokenInfo.name + ' ' + tokenInfo.lastname;
+    }
     return this.username;
   }
 }
