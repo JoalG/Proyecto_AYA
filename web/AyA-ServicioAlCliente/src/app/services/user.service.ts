@@ -33,7 +33,7 @@ export class UserService {
   }
 
   deleteUser(cedula: string):Observable<CustomResponse>{
-    return this.http.delete<CustomResponse>(this.URL_API + '/' + cedula);
+    return this.http.patch<CustomResponse>(this.URL_API + '/delete', {'cedula': cedula});
   }
 
   login(email: string, password: string):Observable<CustomResponse> {

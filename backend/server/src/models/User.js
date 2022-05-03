@@ -31,6 +31,11 @@ const UserSchema = mongoose.Schema({
     userType: {
         type: Number,
         required: true
+    },
+    deleted: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 
