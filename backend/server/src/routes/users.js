@@ -158,10 +158,10 @@ router.patch('/', async(req, res) => {
                     })
                 }
             }
-            if(req.body.password != ''){
+            if(req.body.user.password != ''){
 
                 let salt = crypto.randomBytes(16).toString('hex');
-                let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, 'sha512').toString('hex');
+                let hash = crypto.pbkdf2Sync(req.body.user.password, salt, 1000, 64, 'sha512').toString('hex');
 
                 const updatedUser = await User.updateOne({_id: findUser._id}, {$set: {
                     name: req.body.user.name,
