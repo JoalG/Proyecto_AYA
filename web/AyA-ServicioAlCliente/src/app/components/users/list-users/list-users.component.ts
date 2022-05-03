@@ -25,6 +25,8 @@ export class ListUsersComponent implements OnInit {
   ) { }
 
   users!: any[]
+  idToDelete!: string;
+
 
   ngOnInit(): void {
     this.getUsers();
@@ -61,11 +63,14 @@ export class ListUsersComponent implements OnInit {
     this.router.navigate(['/create-user']);
   }
 
-  confirmDeleteBox(cedula: string) {
-    if(confirm("¿Eliminar usuario?")) {
-      this.deleteUser(cedula);
-    }
+  setIdToDelte(cedula: string){
+    this.idToDelete=cedula;
   }
+  
+  confirmDeleteBox() {
+    this.deleteUser(this.idToDelete);
+  }
+
 
   async deleteUser(cedula: string){
     let res = (await this._userService.deleteUser(cedula).toPromise());
