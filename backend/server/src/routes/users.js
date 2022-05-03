@@ -158,7 +158,7 @@ router.patch('/', async(req, res) => {
                     })
                 }
             }
-            if(req.body.password != null){
+            if(req.body.password != ''){
 
                 let salt = crypto.randomBytes(16).toString('hex');
                 let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, 'sha512').toString('hex');
