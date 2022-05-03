@@ -1,3 +1,7 @@
+.s1{
+    color: #026BBF;
+}
+
 .login{
     background-color: #FFFFFF;
     color: #026BBF;
@@ -41,4 +45,8 @@ input{
     .form{
         width: 75%;
     }
+}
+
+small{
+    cursor: pointer;
 }

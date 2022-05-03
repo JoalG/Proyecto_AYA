@@ -27,6 +27,7 @@ export class EditUserComponent implements OnInit {
     email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
     cedula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
     userType: ['', [Validators.required]],
+    password: ['', [Validators.minLength(10)]]
   });
 
   ngOnInit(): void {
@@ -69,7 +70,7 @@ export class EditUserComponent implements OnInit {
         email: this.myForm.value.email,
         cedula: this.myForm.value.cedula,
         userType: this.myForm.value.userType,
-        password: ''
+        password: this.myForm.value.password
       }
 
       let res = (await this._userService.updateUser(this.originalCedula!, user).toPromise());
