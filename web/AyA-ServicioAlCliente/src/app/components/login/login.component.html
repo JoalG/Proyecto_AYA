@@ -31,6 +31,8 @@
                         <div class="col text-center">
                             <button type="submit" value="submit" (click)="login()" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null">Iniciar Sesión</button>
                         </div>
+
+                        <small data-bs-toggle="modal" data-bs-target="#exampleModal">¿Olvidó su contraseña?</small>
                     </form>
                 </div>
             </div>
@@ -38,3 +40,17 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="s1 modal-title w-100 text-center" id="exampleModalLabel">Recuperar contraseña</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Para solicitar el cambio de contraseña por favor contacte al administrador a soportefuncionario@ayacr.com
+            </div>
+        </div>
+    </div>
+</div>
