@@ -1,0 +1,35 @@
+.title{
+    color: #026BBF;
+}
+
+.section{
+    background-color: #FFFFFF;
+    color: #026BBF;
+    
+    min-height: 100px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 8px rgba(142, 149, 155, 0.2);
+}
+
+.section:hover{
+    cursor: pointer;
+    background: #064A80;
+    color: #FFFFFF;
+    box-shadow: 2px 4px 8px rgba(142, 149, 155, 0.2);
+}
+
+form{
+    color: #686F75;
+}
+
+input{
+    border: 1px solid #CED3D8;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+select{
+    border: 1px solid #CED3D8;
+    box-sizing: border-box;
+    border-radius: 10px;
+}

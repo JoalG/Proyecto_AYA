@@ -1,0 +1,24 @@
+.t1{
+    color: #026BBF;
+}
+
+.t2{
+    color: #026BBF;
+}
+
+.user-li{
+    background-color: white;
+    color: #303336;
+    min-height: 80px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.custom-table{
+    min-width: 1000px;
+}
+
+.table-btn:hover{
+    cursor: pointer;
+    filter: brightness(70%);
+}

@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="px-5 py-3 t2 text-center">
+        Funcionarios
+    </div>
+</div>
+
+<div class="custom-table px-3 ms-3 ms-sm-0  mt-3">
+    <div class="row px-3 py-1 user-li user-li align-items-center">
+        <div class="col-2">
+            <div class="t2">Cédula</div>
+        </div>
+        <div class="col-2">
+            <div class="t2">Nombre</div>
+        </div>
+        <div class="col-2">
+            <div class="t2">Apellidos</div>
+        </div>
+        <div class="col-3">
+            <div class="t2">Correo</div>
+        </div>
+        <div class="col-2">
+            <div class="t2">Tipo</div>
+        </div>
+        <div class="col-1 text-end">
+            <div class="t1 d-inline mx-1 table-btn">
+                <i class="fa-solid fa-square-plus" (click)="goToCreateUser()"></i>
+            </div>
+        </div>
+    </div>
+    <div class="row px-3 py-1 my-3  user-li align-items-center" *ngFor="let user of users">
+        <div class="col-2">
+            <div class="c1">{{user.cedula}}</div>
+        </div>
+        <div class="col-2">
+            <div class="c1">{{user.name}}</div>
+        </div>
+        <div class="col-2">
+            <div class="c1">{{user.lastname}}</div>
+        </div>
+        <div class="col-3">
+            <div class="c1">{{user.email}}</div>
+        </div>
+        <div class="col-2">
+            <div class="c1">{{getUserTypeText(user.userType)}}</div>
+        </div>
+        <div class="col-1 text-end">
+            <div class="t2 text-center d-inline mx-1 table-btn">
+                <i class="fa-solid fa-pen-to-square" (click)="goToEditUser(user.cedula)"></i>
+            </div>
+            <div class="t2 text-center d-inline mx-1 table-btn">
+                <i class="fa-solid fa-trash-can" (click)="setIdToDelte(user.cedula)" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>
+            </div>
+        </div>
+    
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="s1 modal-title w-100 text-center" id="deleteLabel">Confirmación</div>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro de que desea eliminar este usuario?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="confirmDeleteBox()" >Confirmar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,96 @@
+<div class="row">
+    <div class="px-5 py-3 t2 text-center">
+        Editar suspensión de servicio
+    </div>
+</div>
+<div class="row justify-content-center mt-4">
+    <div class="col-10 ">
+        <div class="row my-5">
+            <div class="c1 text-center text-md-start">Complete el siguiente formulario:</div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <form class="w-75" [formGroup]="myForm">    
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Seleccione la provincia
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <select class="form-select c1" [ngClass]="validField('provincia')" id="exampleFormControlSelect1" (change)="changeProvince()" formControlName="provincia">
+                                <option value="" selected disabled hidden></option>    
+                                <option *ngFor="let province of getProvinces()" >{{province.title}}</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Debe seleccionar la provincia
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Seleccione el cantón
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <select class="form-select c1" [ngClass]="validField('canton')" id="exampleFormControlSelect1" (change)="changeCanton()" [attr.disabled]="(myForm.get('provincia')?.invalid)? true: null" formControlName="canton">
+                                <option value="" selected disabled hidden></option>
+                                <option *ngFor="let canton of getCantonsSelectedTop()">{{canton}}</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Debe seleccionar el cantón
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Fecha de inicio
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <input type="date" class="form-control c1" [ngClass]="fechaValidField('fechaInit')" formControlName="fechaInit">
+                        <div class="invalid-feedback">
+                            Fecha de inicio deber ser menor o igual a fecha de fin
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Fecha de fin
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <input type="date" class="form-control c1 " [ngClass]="fechaValidField('fechaFin')" formControlName="fechaFin">
+                        <div class="invalid-feedback">
+                            Fecha de fin deber ser mayor o igual a fecha de inicio
+                        </div>
+                    </div>
+                </div>        
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Descripción
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control" [ngClass]="validField('description')" maxlength="100" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+                        <div class="invalid-feedback">
+                            Debe ingresar la descripción
+                        </div>
+                    </div>
+                </div>      
+                
+                <div class="text-center">
+                    <button type="submit" value="submit" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null" (click)="updateSuspension()">Guardar cambios</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

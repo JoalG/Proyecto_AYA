@@ -1,0 +1,26 @@
+.bill-row{
+    color: #5B5B5B
+    ;
+    border-radius: 10px;
+    height: 40px;    
+}
+
+.t2{
+    color: #026BBF;
+}
+
+.s1{
+    color: #026BBF;
+}
+
+hr{
+    background-color: #8E959B;
+    color: #8E959B;
+    border-radius: 10px;
+    height: 5px;
+}
+
+.bar{
+    padding-left: 0px;
+    padding-right: 0px;
+}

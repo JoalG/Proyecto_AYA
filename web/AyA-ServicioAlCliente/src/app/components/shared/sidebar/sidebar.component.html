@@ -1,0 +1,61 @@
+
+
+<div class="sidebar d-md-block" >
+    <img src="../../../../assets/img/sidebar.svg" class="sb" alt="">
+    <button class="btn btn-toggle ms-2 mt-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+</div>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+    <div class="offcanvas-header">
+        <h6 class="offcanvas-title" id="offcanvas"></h6>
+        <button class="btn text-white" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <div class="offcanvas-body px-0">
+        <div class="list-group">
+            <div [routerLink]="['/consultar-facturacion']" class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Consulta de facturación</div>
+          
+            <hr>
+
+            <div [routerLink]="['/consultar-pagos']" class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Historial de pagos</div>
+          
+            <hr>
+
+            <div [routerLink]="['/reporte-averias']" class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Reporte de averías</div>
+            
+            <!--             
+            <div class="list-group">
+              <div class="list-group-item c1">Fuga en acera</div>
+              <div class="list-group-item c1">Fuga en calle</div>
+              <div class="list-group-item c1">Fuga en hidrante</div>
+              <div class="list-group-item c1">Fuga en medidor</div>
+              <div class="list-group-item c1">Fuga en alcantarilla</div>
+              <div class="list-group-item c1">Fuga en cordón de caño</div>
+            </div> 
+            -->
+          
+            <hr>
+            <div [routerLink]="['/tramites-y-solicitudes']" class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Trámites y solicitudes</div>
+          
+            <hr>
+            <div class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Sucursal más cercana</div>
+
+            <!-- 
+            <div class="list-group">
+              <div class="list-group-item c1">Puntos de pago</div>
+              <div class="list-group-item c1">Puntos de atención</div>
+            </div>
+            -->
+            <hr>
+            <div [routerLink]="['/suspensiones-del-servicio']" class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close">Próximas supensiones de servicio</div>
+            
+            <hr>
+            <div class="list-group-item s1" data-bs-dismiss="offcanvas" aria-label="Close" (click)="goToUsers()">Funcionarios</div>
+          </div>
+
+    </div>
+</div>
+
