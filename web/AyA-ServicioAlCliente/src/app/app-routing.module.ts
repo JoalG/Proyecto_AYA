@@ -22,6 +22,7 @@ import { TramitesYSolicitudesComponent } from './components/tramites-y-solicitud
 import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
 import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-pagos.component';
 import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
+import { ArregloDePagoComponent } from './components/arreglo-de-pago/arreglo-de-pago.component';
 
 const routes: Routes = [
   
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path:'tramites-y-solicitudes', component:TramitesYSolicitudesComponent},
   {path:'consultar-pagos', component:ConsultarPagosComponent},
   {path:'historial-pagos/:nis/:clientIdType/:clientId', component:HistorialPagosComponent},
+  {path:'arreglo-de-pago', component:ArregloDePagoComponent},
   {
     path:'create-user', 
     component:CreateUserComponent,
@@ -85,7 +87,7 @@ const routes: Routes = [
     component: EditSuspensionComponent,
     canActivate: [AuthenticationGuard]
   },
-  {path:'**',pathMatch:'full',redirectTo:'consultar-facturacion'}
+  {path:'**',pathMatch:'full',redirectTo:'consultar-facturacion'},
 
 ];
 

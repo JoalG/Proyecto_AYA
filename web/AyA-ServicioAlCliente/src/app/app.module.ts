@@ -37,6 +37,7 @@ import { TramitesYSolicitudesComponent } from './components/tramites-y-solicitud
 import { EditSuspensionComponent } from './components/suspensions/edit-suspension/edit-suspension.component';
 import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-pagos.component';
 import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
+import { ArregloDePagoComponent } from './components/arreglo-de-pago/arreglo-de-pago.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { HistorialPagosComponent } from './components/historial-pagos/historial-
     TramitesProyectosComponent,
     SuspensionesDelServicioComponent,
     DetallesSuspensionComponent,
-    TramitesYSolicitudesComponent
+    TramitesYSolicitudesComponent,
+    ArregloDePagoComponent
   ],
   imports: [
     BrowserModule,
