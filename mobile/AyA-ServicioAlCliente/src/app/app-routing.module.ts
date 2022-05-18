@@ -8,8 +8,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'consultar-facturacion',
     pathMatch: 'full'
+  },
+  {
+    path: 'consultar-facturacion',
+    loadChildren: () => import('./components/consultar-facturacion/consultar-facturacion.module').then( m => m.ConsultarFacturacionPageModule)
   },
 ];
 
