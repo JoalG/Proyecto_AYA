@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { BillsService } from 'src/app/services/bills.service';
 
 @Component({
   selector: 'app-consultar-facturacion',
@@ -16,7 +18,9 @@ export class ConsultarFacturacionPage implements OnInit {
   });
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private readonly _billService: BillsService,
+    private router: Router
   ) { }
 
   ngOnInit() { }
@@ -33,6 +37,19 @@ export class ConsultarFacturacionPage implements OnInit {
       return (this.myForm.get(id)?.valid)?'is-valid':'is-invalid';
     }
     return '';
+  }
+
+  async getCollectionBill(){
+    let nis = this.myForm.get('nis')?.value;
+    let clientIdType = this.myForm.get('clientIdType')?.value;
+    let clientId = this.myForm.get('clientId')?.value;
+    let bill = (await this._billService.getCollectionBill(nis, clientIdType, clientId).toPromise());
+    if(bill!.success==true){
+      //this.router.navigate(['/detalles', nis, clientIdType, clientId]);
+    }
+    else{
+     // this.toastr.info("El cliente no tiene facturación al cobro", `NIS ${nis}`)
+    }
   }
 
 }
