@@ -24,3 +24,102 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* You can add global styles to this file, and also import other style files */
+
+body{
+    background-color: #F3F4F6;
+}
+
+/* Titles fonts */
+.t1{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+}
+
+.t2{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.t3{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+/* Subtitles fonts */
+.s1{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.s2{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.sb{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+/* Body fonts */
+
+.c1{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.c2{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.c3{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.btn-normal{
+    background: #026BBF;
+    border-radius: 10px;  
+    color: #FFFFFF;
+
+    min-width: 150px;
+
+}
+
+.btn-normal:hover{
+    background: #064A80;
+    color: #FFFFFF;
+
+}
+
+.btn-normal:disabled{
+    background: #EAEAEA;
+    color: #8E959B;
+
+}
+
+.btn-normal:checked{
+    background: green;
+    color: #8E959B;
+}
