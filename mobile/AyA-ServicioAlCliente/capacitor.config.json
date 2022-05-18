@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "AyA-ServicioAlCliente",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
