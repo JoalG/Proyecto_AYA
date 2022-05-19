@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ConsultarPagosPage
+  },
+  {
+    path: 'detalles/:nis/:clientIdType/:clientId',
+    loadChildren: () => import('./detalles/detalles.module').then( m => m.DetallesPageModule)
   }
 ];
 

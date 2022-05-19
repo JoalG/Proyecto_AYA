@@ -46,7 +46,7 @@ export class ConsultarPagosPage implements OnInit {
     
     let res = (await this._paymentService.getPayments(nis, clientIdType, clientId).toPromise());
     if(res?.success){
-      //this.router.navigate(['/historial-pagos', nis, clientIdType, clientId]);
+      this.router.navigate(['/consultar-pagos/detalles', nis, clientIdType, clientId]);
     }
     else{
       //this.toastr.info("El cliente no tiene pagos realizados", `NIS ${nis}`)
