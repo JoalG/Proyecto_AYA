@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="px-5 py-3 t2 text-left">
+        Arreglo de pago
+    </div>
+    <div class="c2 px-5 pb-3 t2 text-left">
+        Para ver requisitos de la solicitud de arreglo de pago presione 
+        <u >aquí</u>
+    </div>
+</div>
+<div class="row p-3 container-fluid my-3">
+    <div class="form-page" *ngIf="step==0" >
+        <div class="row d-flex justify-content-center">
+            <form class="col-10 col-sm-8 col-lg-4" [formGroup]="myForm">
+                <div class="row form-row">
+                    <div class="c1 text-center pb-3">
+                        Ingrese el número NIS
+                    </div> 
+                    <input type="text" maxlength="7" class="form-control c1" [ngClass]="validField('nis')" (keypress)="isNumberKey($event)" formControlName="nis">
+                    <div class="invalid-feedback">
+                        Debe ingresar su número NIS (7 dígitos)
+                    </div>
+                    <div class="c3 text-center mt-1 mb-3">
+                       <u>¿No sabes cuál es tu número NIS?</u>               
+                    </div>    
+                </div>
+                <div class="row form-row">
+                    <div class="c1 text-center pb-3">
+                        Nombre de usuario
+                    </div> 
+                    <input type="text" class="form-control c1" [ngClass]="validField('name')" [attr.disabled]="(myForm.get('nis')?.invalid)? true: null" formControlName="name">
+                    <div class="invalid-feedback">
+                        Debe ingresar su nombre
+                    </div> 
+                </div>
+                <div class="col text-center">
+                    <button type="submit" value="submit" (click)="step=1" class="btn btn-normal sb my-3" [attr.disabled]="!firstFormValid()? true: null">Siguiente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="form-page" *ngIf="step==1">
+        <div class="row d-flex justify-content-center">
+            <form class="col-10 col-sm-8 col-lg-6" [formGroup]="myForm">
+                <div class="row form-row">
+                    <div class="s1 my-1">
+                        Datos del que tramita
+                    </div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Teléfono
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" maxlength="8" class="form-control c1" [ngClass]="validField('phoneNumber')" (keypress)="isNumberKey($event)" formControlName="phoneNumber">
+                        <div class="invalid-feedback">
+                            Debe ingresar su número de teléfono (8 dígitos)
+                        </div>
+                    </div>
+                </div> 
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Celular
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" maxlength="8" class="form-control c1" [ngClass]="validField('cellPhoneNumber')" (keypress)="isNumberKey($event)" formControlName="cellPhoneNumber">
+                        <div class="invalid-feedback">
+                            Debe ingresar su número de teléfono celular (8 dígitos)
+                        </div>
+                    </div>
+                </div> 
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <div class="c1 my-1">
+                            Correo electrónico
+                        </div> 
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control c1" [ngClass]="validField('email')" formControlName="email">
+                        <div class="invalid-feedback">
+                            Debe ingresar un correo valido
+                        </div>
+                    </div>
+                </div>  
+                <div class="row form-row">
+                    <div class="col-md-12">
+                        <div class="s1 mb-3">
+                            Observaciones
+                        </div> 
+                    </div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" [ngClass]="validField('observations')" maxlength="500" rows="3" formControlName="observations"></textarea>
+                        <div class="invalid-feedback">
+                            Debe ingresar las observaciones
+                        </div>
+                    </div>
+                </div>              
+                <div class="text-center">
+                    <button type="submit" value="submit" class="btn btn-normal sb my-3" [attr.disabled]="!myForm.valid? true: null" >Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
