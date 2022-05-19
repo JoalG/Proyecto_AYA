@@ -45,10 +45,10 @@ export class ConsultarFacturacionPage implements OnInit {
     let clientId = this.myForm.get('clientId')?.value;
     let bill = (await this._billService.getCollectionBill(nis, clientIdType, clientId).toPromise());
     if(bill!.success==true){
-      //this.router.navigate(['/detalles', nis, clientIdType, clientId]);
+      this.router.navigate(['/consultar-facturacion/detalles', nis, clientIdType, clientId]);
     }
     else{
-     // this.toastr.info("El cliente no tiene facturación al cobro", `NIS ${nis}`)
+      //this.toastr.info("El cliente no tiene facturación al cobro", `NIS ${nis}`)
     }
   }
 

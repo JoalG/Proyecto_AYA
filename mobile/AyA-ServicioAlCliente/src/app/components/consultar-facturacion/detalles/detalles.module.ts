@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
 
-import { ConsultarFacturacionPageRoutingModule } from './consultar-facturacion-routing.module';
+import { DetallesPageRoutingModule } from './detalles-routing.module';
 
-import { ConsultarFacturacionPage } from './consultar-facturacion.page';
+import { DetallesPage } from './detalles.page';
 
 @NgModule({
   imports: [
     CommonModule,
     IonicModule,
-    ConsultarFacturacionPageRoutingModule,
+    DetallesPageRoutingModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [ConsultarFacturacionPage]
+  declarations: [DetallesPage]
 })
-export class ConsultarFacturacionPageModule {}
+export class DetallesPageModule {}
