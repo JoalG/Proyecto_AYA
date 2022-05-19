@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-//import { PaymentService } from 'src/app/services/payment.service';
+import { PaymentsService } from 'src/app/services/payments.service';
 
 @Component({
   selector: 'app-consultar-pagos',
@@ -18,7 +18,7 @@ export class ConsultarPagosPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    //private readonly _paymentService: PaymentService,
+    private readonly _paymentService: PaymentsService,
     private router: Router
   ) { }
 
@@ -44,13 +44,13 @@ export class ConsultarPagosPage implements OnInit {
     let clientIdType = this.myForm.get('clientIdType')?.value;
     let clientId = this.myForm.get('clientId')?.value;
     
-    /* let res = (await this._paymentService.getPayments(nis, clientIdType, clientId).toPromise());
-      if(res?.success){
-        //this.router.navigate(['/historial-pagos', nis, clientIdType, clientId]);
-      }
-      else{
-        //this.toastr.info("El cliente no tiene pagos realizados", `NIS ${nis}`)
-      } */
+    let res = (await this._paymentService.getPayments(nis, clientIdType, clientId).toPromise());
+    if(res?.success){
+      //this.router.navigate(['/historial-pagos', nis, clientIdType, clientId]);
+    }
+    else{
+      //this.toastr.info("El cliente no tiene pagos realizados", `NIS ${nis}`)
+    }
   }
 
 
