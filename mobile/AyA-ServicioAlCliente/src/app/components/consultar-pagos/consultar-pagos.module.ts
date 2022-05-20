@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ConsultarPagosPageRoutingModule } from './consultar-pagos-routing.module';
 
 import { ConsultarPagosPage } from './consultar-pagos.page';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ConsultarPagosPage } from './consultar-pagos.page';
     IonicModule,
     ConsultarPagosPageRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [ConsultarPagosPage]
 })

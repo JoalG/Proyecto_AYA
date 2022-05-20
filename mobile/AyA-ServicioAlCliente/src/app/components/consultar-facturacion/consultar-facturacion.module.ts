@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { ConsultarFacturacionPageRoutingModule } from './consultar-facturacion-routing.module';
 
 import { ConsultarFacturacionPage } from './consultar-facturacion.page';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { ConsultarFacturacionPage } from './consultar-facturacion.page';
     IonicModule,
     ConsultarFacturacionPageRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [ConsultarFacturacionPage]
 })
