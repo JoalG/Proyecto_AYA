@@ -237,4 +237,14 @@
 
 ion-content{
   --ion-background-color:#F3F4F6;
+  --padding-top: 110px
+}
+
+ion-menu {
+  --min-width: 100%;
+  --background-color: #F3F4F6; 
+}
+
+ion-toolbar {
+  --background-color: #F3F4F6; 
 }
