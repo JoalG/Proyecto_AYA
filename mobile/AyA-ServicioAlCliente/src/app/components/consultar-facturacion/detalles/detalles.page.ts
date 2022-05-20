@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BillsService } from 'src/app/services/bills.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalles',
@@ -17,7 +18,8 @@ export class DetallesPage implements OnInit {
   constructor(
     private readonly _billService: BillsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -33,13 +35,23 @@ export class DetallesPage implements OnInit {
       this.bill = bill?.data;
     }
     else{
-      //this.router.navigate(['/consultar-facturacion']);
-      //this.toastr.info("El cliente no tiene facturación al cobro", `NIS ${this.nis}`);
+      this.router.navigate(['/consultar-facturacion']);
+      this.presentToast(`El cliente NIS ${this.nis} no tiene facturación al cobro.`, "secondary", "information-circle-outline");
     }
   }
 
   goToHistorialPagos(){
-    //this.router.navigate(['/historial-pagos', this.nis, this.clientIdType, this.clientId]);
+    this.router.navigate(['/consultar-pagos/detalles', this.nis, this.clientIdType, this.clientId]);
+  }
+
+  async presentToast(_message: string, _color: string, _icon: string) {
+    const toast = await this.toastController.create({
+      message: _message,
+      color: _color,
+      icon: _icon,
+      duration: 2000
+    });
+    toast.present();
   }
 
 }

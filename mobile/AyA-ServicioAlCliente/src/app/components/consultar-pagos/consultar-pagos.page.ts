@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PaymentsService } from 'src/app/services/payments.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-consultar-pagos',
@@ -19,7 +20,8 @@ export class ConsultarPagosPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private readonly _paymentService: PaymentsService,
-    private router: Router
+    private router: Router,
+    public toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -49,9 +51,18 @@ export class ConsultarPagosPage implements OnInit {
       this.router.navigate(['/consultar-pagos/detalles', nis, clientIdType, clientId]);
     }
     else{
-      //this.toastr.info("El cliente no tiene pagos realizados", `NIS ${nis}`)
+      this.presentToast(`El cliente NIS ${nis} no tiene pagos realizados.`, "secondary", "information-circle-outline");
     }
   }
 
+  async presentToast(_message: string, _color: string, _icon: string) {
+    const toast = await this.toastController.create({
+      message: _message,
+      color: _color,
+      icon: _icon,
+      duration: 2000
+    });
+    toast.present();
+  }
 
 }

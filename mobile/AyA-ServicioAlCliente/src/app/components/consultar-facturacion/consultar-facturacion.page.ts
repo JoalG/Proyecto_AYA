@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BillsService } from 'src/app/services/bills.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-consultar-facturacion',
@@ -19,7 +20,8 @@ export class ConsultarFacturacionPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private readonly _billService: BillsService,
-    private router: Router
+    private router: Router,
+    public toastController: ToastController
   ) { }
 
   ngOnInit() { }
@@ -47,8 +49,18 @@ export class ConsultarFacturacionPage implements OnInit {
       this.router.navigate(['/consultar-facturacion/detalles', nis, clientIdType, clientId]);
     }
     else{
-      //this.toastr.info("El cliente no tiene facturación al cobro", `NIS ${nis}`)
+      this.presentToast(`El cliente NIS ${nis} no tiene facturación al cobro.`, "secondary", "information-circle-outline");
     }
+  }
+
+  async presentToast(_message: string, _color: string, _icon: string) {
+    const toast = await this.toastController.create({
+      message: _message,
+      color: _color,
+      icon: _icon,
+      duration: 2000
+    });
+    toast.present();
   }
 
 }
