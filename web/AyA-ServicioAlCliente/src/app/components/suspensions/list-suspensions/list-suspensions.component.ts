@@ -18,6 +18,7 @@ export class ListSuspensionsComponent implements OnInit {
   ) { }
   
     suspensions!: any[]
+    idToDelete!:string;
   
     ngOnInit(): void {
       this.getSuspensions();
@@ -41,10 +42,12 @@ export class ListSuspensionsComponent implements OnInit {
       this.router.navigate(['/create-suspension']);
     }
   
-    confirmDeleteBox(_id: string) {
-      if(confirm("¿Eliminar suspensión?")) {
-        this.deleteSuspension(_id);
-      }
+    setIdToDelte(_id: string){
+      this.idToDelete=_id;
+    }
+    
+    confirmDeleteBox() {
+      this.deleteSuspension(this.idToDelete);
     }
   
     async deleteSuspension(_id: string){

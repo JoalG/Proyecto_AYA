@@ -1,0 +1,7 @@
+{
+  "name": "AyA-ServicioAlCliente",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

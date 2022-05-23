@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
     let res = (await this._userService.login(this.myForm.get('email')?.value, this.myForm.get('password')?.value).toPromise());
     if(res?.success){
       localStorage.setItem('token', res.data);
-      this._userService.setUsername();
       this.router.navigate(['/user-main-page']);
       this.toastr.success("Bienvenido","Sesión iniciada con éxito");
     }
