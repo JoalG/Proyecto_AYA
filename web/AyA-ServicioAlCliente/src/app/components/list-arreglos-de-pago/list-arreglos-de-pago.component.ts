@@ -36,7 +36,7 @@ export class ListArreglosDePagoComponent implements OnInit {
   goToEditTramite(id: string, type: string){
     switch (type) {
       case "Arreglo de pago":
-        //this.router.navigate(['/edit-arreg', id]);
+        this.router.navigate(['/edit-arreglo-de-pago', id]);
         break;
     
       default:

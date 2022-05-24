@@ -25,7 +25,7 @@ export class ArreglosDePagosService {
     return this.http.get<CustomResponse>(this.URL_API + '/' + _id);
   }
 
-  updateReport(_id: string, state: string):Observable<CustomResponse>{
+  updateArregloDePago(_id: string, state: string):Observable<CustomResponse>{
     return this.http.patch<CustomResponse>(this.URL_API + '/', {'_id': _id, 'state': state});
   }
 }

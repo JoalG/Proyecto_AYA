@@ -39,6 +39,7 @@ import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-
 import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
 import { ArregloDePagoComponent } from './components/arreglo-de-pago/arreglo-de-pago.component';
 import { ListArreglosDePagoComponent } from './components/list-arreglos-de-pago/list-arreglos-de-pago.component';
+import { EditArregloDePagoComponent } from './components/edit-arreglo-de-pago/edit-arreglo-de-pago.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ListArreglosDePagoComponent } from './components/list-arreglos-de-pago/
     DetallesSuspensionComponent,
     TramitesYSolicitudesComponent,
     ArregloDePagoComponent,
-    ListArreglosDePagoComponent
+    ListArreglosDePagoComponent,
+    EditArregloDePagoComponent
   ],
   imports: [
     BrowserModule,

@@ -72,11 +72,9 @@ router.post('/', async(req, res) => {
 router.patch('/', async(req, res) => {
 
     try {
-
         const findArregloDePago = await ArregloDePago.findOne({ _id: req.body._id });
         if (findArregloDePago != null) {
-
-            const updatedArregloDePago = await ArregloDePago.updateOne({_id: findSuspension._id}, {$set: {
+            const updatedArregloDePago = await ArregloDePago.updateOne({_id: findArregloDePago._id}, {$set: {
                 state: req.body.state
             }})
             res.status(200).json({

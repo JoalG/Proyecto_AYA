@@ -12,10 +12,10 @@
         <div class="col-2">
             <div class="t2">NIS</div>
         </div>
-        <div class="col-2">
+        <div class="col-3">
             <div class="t2">Nombre</div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <div class="t2">Estado</div>
         </div>
         <div class="col-2">
@@ -29,10 +29,10 @@
         <div class="col-2">
             <div class="c1">{{tramite.nis}}</div>
         </div>
-        <div class="col-2">
+        <div class="col-3">
             <div class="c1">{{tramite.clientName}}</div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <div class="c1">{{tramite.state}}</div>
         </div>
         <div class="col-2">
@@ -40,7 +40,7 @@
         </div>
         <div class="col-1 text-end">
             <div class="t2 text-center d-inline mx-1 table-btn">
-                <i class="fa-solid fa-pen-to-square" (click)="goToEditTramite(tramite.id, tramite.type)"></i>
+                <i class="fa-solid fa-pen-to-square" (click)="goToEditTramite(tramite._id, tramite.type)"></i>
             </div>
         </div>
     
