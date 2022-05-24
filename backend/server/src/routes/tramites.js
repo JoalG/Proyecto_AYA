@@ -7,7 +7,7 @@ module.exports = router;
 //S: Todas los tramites
 router.get('/', async(req, res) => {
     try {
-        const tramites = await ArregloDePago.find();
+        const tramites = await ArregloDePago.find().sort({date: -1});
         res.json({
             success: true,
             message: 'Success',
