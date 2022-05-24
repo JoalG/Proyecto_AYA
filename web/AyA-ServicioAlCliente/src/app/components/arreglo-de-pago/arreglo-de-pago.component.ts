@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ArregloDePago } from 'src/app/models/arreglo-de-pago';
+import { ArreglosDePagosService } from 'src/app/services/arreglos-de-pagos.service';
 
 @Component({
   selector: 'app-arreglo-de-pago',
@@ -20,7 +24,11 @@ export class ArregloDePagoComponent implements OnInit {
   });
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService,
+    private readonly _arregloDePagoService: ArreglosDePagosService
   ) { }
 
   ngOnInit(): void {
@@ -44,4 +52,25 @@ export class ArregloDePagoComponent implements OnInit {
     return !this.myForm.get('nis')?.invalid && !this.myForm.get('name')?.invalid;
   }
 
+  async createArregloDePago(){
+    if (this.myForm.valid){
+      let arregloDePago: ArregloDePago = {
+        nis: this.myForm.value.nis,
+        clientName: this.myForm.value.name,
+        telephone: this.myForm.value.phoneNumber,
+        cellphone: this.myForm.value.cellPhoneNumber,
+        email: this.myForm.value.email,
+        observations: this.myForm.value.observations
+      }
+
+      let res = (await this._arregloDePagoService.createArregloDePago(arregloDePago).toPromise());
+      if(res?.success){
+        this.router.navigate(['/consultar-facturacion']);
+        this.toastr.success('Arreglo de pago solicitado con éxito');
+      }
+      else{
+        this.toastr.error('Arreglo de pago no pudo ser solicitado')
+      }
+    }
+  }
 }

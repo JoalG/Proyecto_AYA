@@ -23,6 +23,7 @@ import { EditSuspensionComponent } from './components/suspensions/edit-suspensio
 import { ConsultarPagosComponent } from './components/consultar-pagos/consultar-pagos.component';
 import { HistorialPagosComponent } from './components/historial-pagos/historial-pagos.component';
 import { ArregloDePagoComponent } from './components/arreglo-de-pago/arreglo-de-pago.component';
+import { ListArreglosDePagoComponent } from './components/list-arreglos-de-pago/list-arreglos-de-pago.component';
 
 const routes: Routes = [
   
@@ -85,6 +86,11 @@ const routes: Routes = [
   {
     path: 'edit-suspension/:_id',
     component: EditSuspensionComponent,
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'list-tramites',
+    component: ListArreglosDePagoComponent,
     canActivate: [AuthenticationGuard]
   },
   {path:'**',pathMatch:'full',redirectTo:'consultar-facturacion'},
