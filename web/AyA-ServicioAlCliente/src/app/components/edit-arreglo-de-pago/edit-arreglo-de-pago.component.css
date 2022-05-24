@@ -1,0 +1,36 @@
+.t2{
+    color: #026BBF;
+}
+
+.c2{
+    color: #5B5B5B;
+}
+
+.s1{
+    color: #5B5B5B;
+}
+
+input{
+    border: 1px solid #CED3D8;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.form-row{
+    padding-bottom: 5%;
+}
+
+form{
+    color: #686F75;
+}
+
+textarea{
+    /* White */
+    background: #FFFFFF;
+    /* Shadows/gray light */
+
+    border: 1px solid #CED3D8;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
