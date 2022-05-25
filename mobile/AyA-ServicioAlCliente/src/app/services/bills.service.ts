@@ -8,7 +8,7 @@ import { CustomResponse } from '../models/custom-response.model';
 })
 export class BillsService {
 
-  URL_API = 'http://localhost:3000/bills';
+  URL_API = 'https://server-proyecto-aya.herokuapp.com/bills';
   private sharingBill: any;
 
   constructor(private http:HttpClient) { }
