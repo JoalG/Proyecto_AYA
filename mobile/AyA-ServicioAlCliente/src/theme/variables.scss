@@ -243,8 +243,10 @@ ion-content{
 ion-menu {
   --min-width: 100%;
   --background-color: #F3F4F6; 
+  --background: #F3F4F6; 
 }
 
+
 ion-toolbar {
-  --background-color: #F3F4F6; 
+  --background: #F3F4F6;
 }
