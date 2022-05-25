@@ -11,7 +11,7 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 })
 export class UserService {
 
-  URL_API = 'http://localhost:3000/users';
+  URL_API = 'https://server-proyecto-aya.herokuapp.com/users';
   private username: string = '';
 
   constructor(private http:HttpClient, private router: Router) { }

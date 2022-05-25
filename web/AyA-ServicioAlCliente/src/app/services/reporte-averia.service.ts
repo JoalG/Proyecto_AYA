@@ -10,7 +10,7 @@ import { CustomResponse } from '../models/custom-response.model';
 })
 export class ReporteAveriaService {
 
-  URL_API = 'http://localhost:3000/reportesAverias';
+  URL_API = 'https://server-proyecto-aya.herokuapp.com/reportesAverias';
 
   constructor(
     private http:HttpClient, 

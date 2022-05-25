@@ -10,7 +10,7 @@ import { CustomResponse } from '../models/custom-response.model';
 })
 export class ArreglosDePagosService {
 
-  URL_API = 'http://localhost:3000/arregloDePago';
+  URL_API = 'https://server-proyecto-aya.herokuapp.com/arregloDePago';
 
   constructor(
     private http:HttpClient, 

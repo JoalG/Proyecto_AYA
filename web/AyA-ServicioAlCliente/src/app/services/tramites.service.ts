@@ -9,7 +9,7 @@ import { CustomResponse } from '../models/custom-response.model';
 })
 export class TramitesService {
 
-  URL_API = 'http://localhost:3000/tramites';
+  URL_API = 'https://server-proyecto-aya.herokuapp.com/tramites';
 
   constructor(
     private http:HttpClient, 

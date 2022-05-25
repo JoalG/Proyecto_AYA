@@ -9,7 +9,7 @@ import { CustomResponse } from '../models/custom-response.model';
 })
 export class PaymentService {
 
-  URL_API = 'http://localhost:3000/payments';
+  URL_API = 'https://server-proyecto-aya.herokuapp.com/payments';
   private sharingPayments: any;
 
   constructor(
