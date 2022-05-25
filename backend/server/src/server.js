@@ -20,6 +20,8 @@ const usersRoute = require('./routes/users');
 const ReporteAveriaRoute = require('./routes/reporteAveria');
 const suspensionRoute = require('./routes/suspensions');
 const paymentRoute = require('./routes/payments');
+const tramitesRoute = require('./routes/tramites');
+const arregloDePagoRoute = require('./routes/arregloDePago');
 
 
 app.use('/bills', billRoute);
@@ -27,6 +29,8 @@ app.use('/users', usersRoute);
 app.use('/reportesAverias', ReporteAveriaRoute);
 app.use('/suspensions', suspensionRoute);
 app.use('/payments', paymentRoute);
+app.use('/tramites', tramitesRoute);
+app.use('/arregloDePago', arregloDePagoRoute);
 
 mongoose.connect(
     process.env.DB_CONNECTION, {

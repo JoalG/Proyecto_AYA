@@ -14,6 +14,10 @@ export class UserTramitesSolicitudesComponent implements OnInit {
   }
 
   goToTramitesSolicitudes(){
+    this.router.navigate(['/list-tramites']);
+  }
+
+  goToReportes(){
     this.router.navigate(['/list-reporte-averia']);
   }
 

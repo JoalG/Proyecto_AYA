@@ -6,13 +6,13 @@ import { ArregloDePago } from 'src/app/models/arreglo-de-pago';
 import { ArreglosDePagosService } from 'src/app/services/arreglos-de-pagos.service';
 
 @Component({
-  selector: 'app-arreglo-de-pago',
-  templateUrl: './arreglo-de-pago.component.html',
-  styleUrls: ['./arreglo-de-pago.component.css']
+  selector: 'app-edit-arreglo-de-pago',
+  templateUrl: './edit-arreglo-de-pago.component.html',
+  styleUrls: ['./edit-arreglo-de-pago.component.css']
 })
-export class ArregloDePagoComponent implements OnInit {
+export class EditArregloDePagoComponent implements OnInit {
 
-  step: number = 0;
+  arregloDePago!: ArregloDePago;
 
   myForm: FormGroup = this.fb.group({
     nis: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
@@ -20,7 +20,8 @@ export class ArregloDePagoComponent implements OnInit {
     phoneNumber: ['', [Validators.required, Validators.minLength(8)]],
     cellPhoneNumber: ['', [Validators.required, Validators.minLength(8)]],
     email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
-    observations: ['', [Validators.required, Validators.maxLength(500)]]
+    observations: ['', [Validators.required, Validators.maxLength(500)]],
+    state: ['']
   });
 
   constructor(
@@ -32,6 +33,7 @@ export class ArregloDePagoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.setArregloDePagoInfo();
   }
 
   isNumberKey(evt:KeyboardEvent) {
@@ -52,25 +54,40 @@ export class ArregloDePagoComponent implements OnInit {
     return !this.myForm.get('nis')?.invalid && !this.myForm.get('name')?.invalid;
   }
 
-  async createArregloDePago(){
-    if (this.myForm.valid){
-      let arregloDePago: ArregloDePago = {
-        nis: this.myForm.value.nis,
-        clientName: this.myForm.value.name,
-        telephone: this.myForm.value.phoneNumber,
-        cellphone: this.myForm.value.cellPhoneNumber,
-        email: this.myForm.value.email,
-        observations: this.myForm.value.observations
-      }
+  async setArregloDePagoInfo(){
+    let _id = this.route.snapshot.paramMap.get('_id');
+    let res = (await this._arregloDePagoService.getArregloDePago(_id!).toPromise());
+    if(res?.success){
+      this.arregloDePago = res?.data;
+      this.fillForm(res?.data);
+    }
+    else{
+      console.log(res?.message);
+    }
+  }
 
-      let res = (await this._arregloDePagoService.createArregloDePago(arregloDePago).toPromise());
+  fillForm(arregloDePago: ArregloDePago){
+    this.myForm.get('nis')?.setValue(arregloDePago.nis);
+    this.myForm.get('name')?.setValue(arregloDePago.clientName);
+    this.myForm.get('phoneNumber')?.setValue(arregloDePago.telephone);
+    this.myForm.get('cellPhoneNumber')?.setValue(arregloDePago.cellphone);
+    this.myForm.get('email')?.setValue(arregloDePago.email);
+    this.myForm.get('observations')?.setValue(arregloDePago.observations);
+    this.myForm.get('state')?.setValue(arregloDePago.state);
+  }
+
+  async updateArregloDePago(){
+    if (this.myForm.valid){
+      let state = this.myForm.get('state')?.value;
+      let res = (await this._arregloDePagoService.updateArregloDePago(this.arregloDePago._id!, state).toPromise());
       if(res?.success){
-        this.router.navigate(['/consultar-facturacion']);
-        this.toastr.success('Arreglo de pago solicitado con éxito');
+        this.router.navigate(['/list-tramites']);
+        this.toastr.success('Arreglo de pago actualizado con éxito');
       }
       else{
-        this.toastr.error('Arreglo de pago no pudo ser solicitado')
+        this.toastr.error('Arreglo de pago no pudo ser actualizado')
       }
     }
   }
+
 }
